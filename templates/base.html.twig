@@ -2,16 +2,79 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Bienvenue à IDDEES{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}">
+        {% block css %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ path('accueil') }}">
+                <img class="img-navbar" src="assets/img/logo.png" alt="Logo IDDEES">
+            </a>
+        </div>
+        <ul class="ul-navbar">
+            <li class="li-navbar">
+                <a class="lien-navbar" href="{{ path ('qui-sommes-nous') }}">Qui sommes-nous ?</a>
+            </li>
+            <li class="li-navbar">
+                <a class="lien-navbar" href="collecte-braderie.html">Nos sites de collecte <br> Nos braderies</a>
+            </li>
+            <li class="li-navbar">
+                <a class="lien-navbar" href="sensibilisation.html">Sensibilisation</a>
+            </li>
+            <li class="li-navbar">
+                <a class="lien-navbar" href="partenaires.html">Nos partenaires</a>
+            </li>
+            <li class="li-navbar">
+                <a class="lien-navbar" href="contact.html">
+                    Nous contacter<br>
+                    Adhérer<br>
+                    Demander une collecte</a>
+            </li>
+
+        </ul>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+        {% block body %}
+
+        {% endblock %}
+    <footer>
+        <ul class="ul-footer">
+            <li class="li-footer">
+                <a class="lien-footer" href="cluf.html">
+                    Informations légales
+                </a>
+            </li>
+            <li class="li-footer">
+                <a class="lien-footer" href="">
+                    lien 2
+                </a>
+            </li>
+            <li class="li-footer">
+                <a class="lien-footer" href="">
+                    lien 3
+                </a>
+            </li>
+            <li class="li-footer">
+                <a class="lien-footer" href="">
+                    lien 4
+                </a>
+            </li>
+            <li class="li-footer">
+                <a class="lien-footer" href="">
+                    <i class="fa-solid fa-lock"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script src="https://kit.fontawesome.com/c971cac520.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
     </body>
 </html>
