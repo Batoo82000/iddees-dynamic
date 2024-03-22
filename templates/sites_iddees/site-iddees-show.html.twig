@@ -13,14 +13,20 @@
      <a href="{{ path ('sites_iddees') }}" class="btn-return">Retour</a>
 
     <h2>{{ siteIddees.nom }}</h2>
-    <p></p>
-    <div class="mention-spectiale">
-        metion spéciale
-    </div>
 
+    {% if siteIddees.mentionSpeciale is not empty %}
+    <div class="mention-speciale">
+        <p>
+            {{ siteIddees.mentionSpeciale }}
+        </p>
+    </div>
+    {% else %}
+        <div class="mention-speciale">
+        </div>
+    {% endif %}
     <div class="photo-map">
         <div class="photo">
-            <img src="{{ asset('assets/img/voltaire.jpg') }}" alt="{{ siteIddees.nom }}">
+            <img src="/assets/img/sites/{{ siteIddees.photo }}" alt="{{ siteIddees.nom }}">
         </div>
         <div class="map">
             {{ siteIddees.carte | raw}}
@@ -29,32 +35,51 @@
 
     <div class="info-contact">
         <div class="telephone">
-            Téléphone : 0565656565
+            <i class="fa-solid fa-phone"></i> : 0{{ siteIddees.telephone }}
         </div>
         <div class="email">
-            Courriel : mail@mail.com
+            <i class="fa-solid fa-envelope"></i> : {{ siteIddees.email }}
         </div>
         <div class="adresse">
-            Adresse : 37 rue voltaire 82000 montauban
+            <i class="fa-solid fa-location-dot"></i> : {{ siteIddees.adresse }} <br /> {{ siteIddees.codePostal }}, {{ siteIddees.ville }}
         </div>
     </div>
 
-
-    <div class="descriptif">
-        descriptif du site
+    <div class="description">
+        {{ siteIddees.description | raw }}
     </div>
-
-
-    <div class="horaires">
-        <h5 class="titre-horaires">horaires</h5>
-        <div class="magasin-apport">
-            horaires magasin
-        </div>
-        <div class="magasin-apport">
-            horaires apports
-        </div>
-
-    </div>
-
+{% if siteIddees.horairesMagasin is not empty  %}
+    <table class="horaires-magasin">
+        <caption class="titre-horaires">
+            Horaires de la ressourcerie
+        </caption>
+        <tbody>
+            <tr>
+                <td>Lundi</td>
+                <td>{{ siteIddees.horairesMagasin.lundi }}</td>
+            </tr>
+            <tr>
+                <td>Mardi</td>
+                <td>{{ siteIddees.horairesMagasin.mardi }}</td>
+            </tr>
+            <tr>
+                <td>Mercredi</td>
+                <td>{{ siteIddees.horairesMagasin.mercredi }}</td>
+            </tr>
+            <tr>
+                <td>Jeudi</td>
+                <td>{{ siteIddees.horairesMagasin.jeudi }}</td>
+            </tr>
+            <tr>
+                <td>Vendredi</td>
+                <td>{{ siteIddees.horairesMagasin.vendredi }}</td>
+            </tr>
+            <tr>
+                <td>Samedi</td>
+                <td>{{ siteIddees.horairesMagasin.samedi }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endif %}
 
 {% endblock %}

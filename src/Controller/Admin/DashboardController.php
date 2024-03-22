@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Horaires;
+use App\Entity\HorairesApports;
+use App\Entity\HorairesMagasin;
 use App\Entity\LocalisationSites;
 use App\Entity\Organigramme;
 use App\Entity\RoleOrganigramme;
@@ -48,8 +50,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Organigramme', 'fas fa-list', Organigramme::class);
-        yield MenuItem::linkToCrud('Rôles Organigramme', 'fas fa-list', RoleOrganigramme::class);
-        yield MenuItem::linkToCrud('Localisation', 'fas fa-list', LocalisationSites::class);
-        yield MenuItem::linkToCrud("Sites d'IDDEES", 'fas fa-list', SitesIddees::class);
+        yield MenuItem::linkToCrud('Rôles Organigramme', 'fas fa-sitemap', RoleOrganigramme::class);
+        yield MenuItem::linkToCrud('Localisation', 'fas fa-location-dot', LocalisationSites::class);
+        yield MenuItem::linkToCrud("Sites d'IDDEES", 'fas fa-shop', SitesIddees::class);
+        yield MenuItem::linkToCrud("Horaires magasin", 'fas fa-clock', HorairesMagasin::class);
+        yield MenuItem::linkToCrud("Horaires apports", 'fas fa-recycle', HorairesApports::class);
     }
 }

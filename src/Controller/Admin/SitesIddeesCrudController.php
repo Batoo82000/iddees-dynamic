@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\SitesIddees;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -28,7 +29,7 @@ class SitesIddeesCrudController extends AbstractCrudController
             TextField::new('mentionSpeciale'),
             TextareaField::new('carte'),
             ImageField::new('photo')
-                ->setBasePath('assets/img/wites')
+                ->setBasePath('/assets/img/sites')
                 ->setUploadDir('/public/assets/img/sites')
                 ->setUploadedFileNamePattern('[name]-[timestamp].[extension]')
                 ->setFormTypeOptions(['attr'=>[
@@ -40,6 +41,8 @@ class SitesIddeesCrudController extends AbstractCrudController
             NumberField::new('telephone'),
             EmailField::new('email'),
             TextEditorField::new('description'),
+            AssociationField::new('horairesMagasin'),
+            AssociationField::new('horairesApports')
         ];
     }
 
