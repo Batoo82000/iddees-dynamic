@@ -2,19 +2,22 @@
 
 {% block title %}Hello SitesIddeesController!{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/card_sites.css') }}">
+{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Sébastien/Desktop/iddees_dynamique/src/Controller/SitesIddeesController.php</code></li>
-        <li>Your template at <code>C:/Users/Sébastien/Desktop/iddees_dynamique/templates/sites_iddees/index.html.twig</code></li>
-    </ul>
+<div class="card_group">
+    {% for siteIddees in sitesIddees %}
+            <a href="{{ path('site_iddees_show', {'id' : siteIddees.id}) }}">
+                <div class="card">
+                    <h4>{{ siteIddees.nom }}</h4>
+                    <div class="card_photo">
+                        <img src="/assets/img/sites/{{ siteIddees.photo }}" alt="{{ siteIddees.nom }}" class="photo">
+                    </div>
+                </div>
+            </a>
+    {% endfor %}
 </div>
 {% endblock %}

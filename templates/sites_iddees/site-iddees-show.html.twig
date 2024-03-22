@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ siteIddees.nom}}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/site-iddees-show.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/card_sites.css') }}">
+{% endblock %}
+
+{% block body %}
+
+     <a href="{{ path ('sites_iddees') }}" class="btn-return">Retour</a>
+
+    <h2>{{ siteIddees.nom }}</h2>
+    <p></p>
+    <div class="mention-spectiale">
+        metion spéciale
+    </div>
+
+    <div class="photo-map">
+        <div class="photo">
+            <img src="{{ asset('assets/img/voltaire.jpg') }}" alt="{{ siteIddees.nom }}">
+        </div>
+        <div class="map">
+            {{ siteIddees.carte | raw}}
+        </div>
+    </div>
+
+    <div class="info-contact">
+        <div class="telephone">
+            Téléphone : 0565656565
+        </div>
+        <div class="email">
+            Courriel : mail@mail.com
+        </div>
+        <div class="adresse">
+            Adresse : 37 rue voltaire 82000 montauban
+        </div>
+    </div>
+
+
+    <div class="descriptif">
+        descriptif du site
+    </div>
+
+
+    <div class="horaires">
+        <h5 class="titre-horaires">horaires</h5>
+        <div class="magasin-apport">
+            horaires magasin
+        </div>
+        <div class="magasin-apport">
+            horaires apports
+        </div>
+
+    </div>
+
+
+{% endblock %}

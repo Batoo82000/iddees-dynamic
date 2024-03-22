@@ -28,7 +28,10 @@ class OrganigrammeCrudController extends AbstractCrudController
             ImageField::new('photo')
                 ->setBasePath('assets/img/organigramme')
                 ->setUploadDir('/public/assets/img/organigramme')
-                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]'),
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->setFormTypeOptions(['attr'=>[
+                    'accept'=>"image/x-png,image/gif,image/jpeg,image/jpg,image/webp"
+                ]]),
             AssociationField::new('roleOrganigramme'),
             AssociationField::new('localisationSites')
         ];

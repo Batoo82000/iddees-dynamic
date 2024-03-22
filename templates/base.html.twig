@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="logo">
             <a href="{{ path('accueil') }}">
-                <img class="img-navbar" src="assets/img/logo.png" alt="Logo IDDEES">
+                <img class="img-navbar" src="{{ asset('assets/img/logo.png') }}" alt="Logo IDDEES">
             </a>
         </div>
         <ul class="ul-navbar">
@@ -20,7 +20,7 @@
                 <a class="lien-navbar" href="{{ path ('qui-sommes-nous') }}">Qui sommes-nous ?</a>
             </li>
             <li class="li-navbar">
-                <a class="lien-navbar" href="collecte-braderie.html">Nos sites de collecte <br> Nos braderies</a>
+                <a class="lien-navbar" href="{{ path ('sites_iddees') }}">Nos recycleries<br>Nos sites de collecte</a>
             </li>
             <li class="li-navbar">
                 <a class="lien-navbar" href="sensibilisation.html">Sensibilisation</a>

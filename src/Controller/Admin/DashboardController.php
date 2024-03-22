@@ -2,9 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Horaires;
 use App\Entity\LocalisationSites;
 use App\Entity\Organigramme;
 use App\Entity\RoleOrganigramme;
+use App\Entity\SitesIddees;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -47,6 +49,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Organigramme', 'fas fa-list', Organigramme::class);
         yield MenuItem::linkToCrud('Rôles Organigramme', 'fas fa-list', RoleOrganigramme::class);
-        yield MenuItem::linkToCrud('Sites', 'fas fa-list', LocalisationSites::class);
+        yield MenuItem::linkToCrud('Localisation', 'fas fa-list', LocalisationSites::class);
+        yield MenuItem::linkToCrud("Sites d'IDDEES", 'fas fa-list', SitesIddees::class);
     }
 }

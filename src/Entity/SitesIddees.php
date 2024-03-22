@@ -38,8 +38,17 @@ class SitesIddees
     #[ORM\Column(length: 50)]
     private ?string $email = null;
 
-    #[ORM\ManyToOne(inversedBy: 'siteIddees')]
-    private ?Horaires $horaires = null;
+    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist', 'remove'])]
+    private ?HorairesMagasin $horairesMagasin = null;
+
+    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist', 'remove'])]
+    private ?HorairesApports $horairesApports = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
     public function getId(): ?int
     {
@@ -142,14 +151,70 @@ class SitesIddees
         return $this;
     }
 
-    public function getHoraires(): ?Horaires
+    public function getHorairesMagasin(): ?HorairesMagasin
     {
-        return $this->horaires;
+        return $this->horairesMagasin;
     }
 
-    public function setHoraires(?Horaires $horaires): static
+    public function setHorairesMagasin(?HorairesMagasin $horairesMagasin): static
     {
-        $this->horaires = $horaires;
+        // unset the owning side of the relation if necessary
+        if ($horairesMagasin === null && $this->horairesMagasin !== null) {
+            $this->horairesMagasin->setSitesIddees(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($horairesMagasin !== null && $horairesMagasin->getSitesIddees() !== $this) {
+            $horairesMagasin->setSitesIddees($this);
+        }
+
+        $this->horairesMagasin = $horairesMagasin;
+
+        return $this;
+    }
+
+    public function getHorairesApports(): ?HorairesApports
+    {
+        return $this->horairesApports;
+    }
+
+    public function setHorairesApports(?HorairesApports $horairesApports): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($horairesApports === null && $this->horairesApports !== null) {
+            $this->horairesApports->setSitesIddees(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($horairesApports !== null && $horairesApports->getSitesIddees() !== $this) {
+            $horairesApports->setSitesIddees($this);
+        }
+
+        $this->horairesApports = $horairesApports;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): static
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
