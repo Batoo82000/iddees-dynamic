@@ -37,6 +37,9 @@ class HorairesApports
     #[ORM\OneToOne(inversedBy: 'horairesApports', cascade: ['persist', 'remove'])]
     private ?SitesIddees $sitesIddees = null;
 
+    public function __toString() {
+        return $this->nom;
+    }
     public function getId(): ?int
     {
         return $this->id;

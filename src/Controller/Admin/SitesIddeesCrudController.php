@@ -42,7 +42,7 @@ class SitesIddeesCrudController extends AbstractCrudController
             EmailField::new('email'),
             TextEditorField::new('description'),
             AssociationField::new('horairesMagasin'),
-            AssociationField::new('horairesApports')
+            AssociationField::new('horairesApports'),
         ];
     }
 

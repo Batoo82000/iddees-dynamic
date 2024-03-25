@@ -44,42 +44,79 @@
             <i class="fa-solid fa-location-dot"></i> : {{ siteIddees.adresse }} <br /> {{ siteIddees.codePostal }}, {{ siteIddees.ville }}
         </div>
     </div>
-
+    {% if siteIddees.description is not empty  %}
     <div class="description">
         {{ siteIddees.description | raw }}
     </div>
-{% if siteIddees.horairesMagasin is not empty  %}
-    <table class="horaires-magasin">
-        <caption class="titre-horaires">
-            Horaires de la ressourcerie
-        </caption>
-        <tbody>
-            <tr>
-                <td>Lundi</td>
-                <td>{{ siteIddees.horairesMagasin.lundi }}</td>
-            </tr>
-            <tr>
-                <td>Mardi</td>
-                <td>{{ siteIddees.horairesMagasin.mardi }}</td>
-            </tr>
-            <tr>
-                <td>Mercredi</td>
-                <td>{{ siteIddees.horairesMagasin.mercredi }}</td>
-            </tr>
-            <tr>
-                <td>Jeudi</td>
-                <td>{{ siteIddees.horairesMagasin.jeudi }}</td>
-            </tr>
-            <tr>
-                <td>Vendredi</td>
-                <td>{{ siteIddees.horairesMagasin.vendredi }}</td>
-            </tr>
-            <tr>
-                <td>Samedi</td>
-                <td>{{ siteIddees.horairesMagasin.samedi }}</td>
-            </tr>
-        </tbody>
-    </table>
-{% endif %}
+    {% endif %}
+
+    <div class="tableaux-horaires">
+        {% if siteIddees.horairesMagasin is not empty  %}
+            <table class="horaires-magasin">
+                <caption class="titre-horaires">
+                    Horaires de la ressourcerie
+                </caption>
+                <tbody>
+                    <tr>
+                        <td>Lundi</td>
+                        <td>{{ siteIddees.horairesMagasin.lundi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mardi</td>
+                        <td>{{ siteIddees.horairesMagasin.mardi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi</td>
+                        <td>{{ siteIddees.horairesMagasin.mercredi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jeudi</td>
+                        <td>{{ siteIddees.horairesMagasin.jeudi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Vendredi</td>
+                        <td>{{ siteIddees.horairesMagasin.vendredi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Samedi</td>
+                        <td>{{ siteIddees.horairesMagasin.samedi }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+        {% if siteIddees.horairesApports is not empty  %}
+            <table class="horaires-magasin">
+                <caption class="titre-horaires">
+                    Horaires des apports
+                </caption>
+                <tbody>
+                <tr>
+                    <td>Lundi</td>
+                    <td>{{ siteIddees.horairesApports.lundi }}</td>
+                </tr>
+                <tr>
+                    <td>Mardi</td>
+                    <td>{{ siteIddees.horairesApports.mardi }}</td>
+                </tr>
+                <tr>
+                    <td>Mercredi</td>
+                    <td>{{ siteIddees.horairesApports.mercredi }}</td>
+                </tr>
+                <tr>
+                    <td>Jeudi</td>
+                    <td>{{ siteIddees.horairesApports.jeudi }}</td>
+                </tr>
+                <tr>
+                    <td>Vendredi</td>
+                    <td>{{ siteIddees.horairesApports.vendredi }}</td>
+                </tr>
+                <tr>
+                    <td>Samedi</td>
+                    <td>{{ siteIddees.horairesApports.samedi }}</td>
+                </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
 
 {% endblock %}
