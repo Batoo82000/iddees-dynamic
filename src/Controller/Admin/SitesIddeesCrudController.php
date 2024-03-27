@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 
 class SitesIddeesCrudController extends AbstractCrudController
 {
@@ -29,12 +30,9 @@ class SitesIddeesCrudController extends AbstractCrudController
             TextField::new('mentionSpeciale'),
             TextareaField::new('carte'),
             ImageField::new('photo')
-                ->setBasePath('/assets/img/sites')
+                ->setBasePath("assets/img/sites")
                 ->setUploadDir('/public/assets/img/sites')
-                ->setUploadedFileNamePattern('[name]-[timestamp].[extension]')
-                ->setFormTypeOptions(['attr'=>[
-                    'accept'=>"image/x-png,image/gif,image/jpeg,image/jpg,image/webp"
-                ]]),
+                ->setUploadedFileNamePattern("[name]-[timestamp].[extension]"),
             TextField::new('adresse'),
             NumberField::new('codePostal'),
             TextField::new('ville'),
@@ -43,7 +41,7 @@ class SitesIddeesCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             AssociationField::new('horairesMagasin'),
             AssociationField::new('horairesApports'),
-        ];
+            ];
     }
 
 }

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sensiblisation{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/sensibilisation.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="liste_articles">
+    <a href="#">
+        <div class="article">
+                <div class="article_image">
+                    <img src="{{ asset('assets/img/img-1.jpg') }}" alt="">
+                </div>
+                <div class="article_titre">
+                    <h3>Titre Blog</h3>
+                </div>
+                <div class="article_auteur_date">
+                    <div class="article_auteur">
+                        <p>Écrit par : </p>
+                        <p>Marijo</p>
+                    </div>
+                    <div class="article_date">
+                        <p>Posté le : </p>
+                        <p>20/03/2024</p>
+                    </div>
+                </div>
+                <div class="article_resume">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi dolor enim esse est illum iste pariatur quae saepe. Aut ea illo laudantium maxime quam sapiente suscipit tempora tenetur vel. elit. At commodi dolor enim esse est illum iste pariatur quae saepe.t illum iste pariatur quae saepe.ariatur quae saepe.t illum iste pariatur quae saepe.
+                    </p>
+                </div>
+        </div>
+    </a>
+</div>
+{% endblock %}

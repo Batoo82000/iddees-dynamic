@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Organigramme;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -26,14 +25,12 @@ class OrganigrammeCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             ImageField::new('photo')
-                ->setBasePath('assets/img/organigramme')
+                ->setBasePath("assets/img/organigramme")
                 ->setUploadDir('/public/assets/img/organigramme')
-                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
-                ->setFormTypeOptions(['attr'=>[
-                    'accept'=>"image/x-png,image/gif,image/jpeg,image/jpg,image/webp"
-                ]]),
+                ->setUploadedFileNamePattern("[name]-[timestamp].[extension]"),
             AssociationField::new('roleOrganigramme'),
-            AssociationField::new('localisationSites')
+            AssociationField::new('localisationSites'),
         ];
     }
+
 }

@@ -2,13 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Horaires;
+use App\Entity\Blog;
 use App\Entity\HorairesApports;
 use App\Entity\HorairesMagasin;
+use App\Entity\ImagesBlog;
 use App\Entity\LocalisationSites;
 use App\Entity\Organigramme;
 use App\Entity\RoleOrganigramme;
 use App\Entity\SitesIddees;
+use App\Entity\VideosBlog;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -26,7 +28,7 @@ class DashboardController extends AbstractDashboardController
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
          $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-         return $this->redirect($adminUrlGenerator->setController(OrganigrammeCrudController::class)->generateUrl());
+         return $this->redirect($adminUrlGenerator->setController(BlogCrudController::class)->generateUrl());
 
         // Option 2. You can make your dashboard redirect to different pages depending on the user
         //
@@ -43,17 +45,22 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Iddees : page de gestion');
+            ->setTitle('Iddees Dynamique');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Organigramme', 'fas fa-list', Organigramme::class);
-        yield MenuItem::linkToCrud('Rôles Organigramme', 'fas fa-sitemap', RoleOrganigramme::class);
-        yield MenuItem::linkToCrud('Localisation', 'fas fa-location-dot', LocalisationSites::class);
-        yield MenuItem::linkToCrud("Sites d'IDDEES", 'fas fa-shop', SitesIddees::class);
-        yield MenuItem::linkToCrud("Horaires magasin", 'fas fa-clock', HorairesMagasin::class);
-        yield MenuItem::linkToCrud("Horaires apports", 'fas fa-recycle', HorairesApports::class);
+        yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
+        yield MenuItem::LinkToCrud('Images des Articles', 'fa fa-image', ImagesBlog::class);
+        yield MenuItem::LinkToCrud('Videos des Articles', 'fa fa-video', VideosBlog::class);
+        yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
+        yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
+        yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
+        yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);
+        yield MenuItem::LinkToCrud('Horaires des Sites : Apports', 'fa-regular fa-clock', HorairesApports::class);
+        yield MenuItem::LinkToCrud('Horaires des Sites : Magasin', 'fa-solid fa-clock', HorairesMagasin::class);
+
+        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

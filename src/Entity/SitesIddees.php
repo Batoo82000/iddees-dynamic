@@ -38,10 +38,10 @@ class SitesIddees
     #[ORM\Column(length: 50)]
     private ?string $email = null;
 
-    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist'])]
     private ?HorairesMagasin $horairesMagasin = null;
 
-    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'sitesIddees', cascade: ['persist'])]
     private ?HorairesApports $horairesApports = null;
 
     #[ORM\Column(length: 255, nullable: true)]

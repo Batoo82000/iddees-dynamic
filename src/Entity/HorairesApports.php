@@ -34,7 +34,7 @@ class HorairesApports
     #[ORM\Column(length: 45, nullable: true)]
     private ?string $samedi = null;
 
-    #[ORM\OneToOne(inversedBy: 'horairesApports', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'horairesApports', cascade: ['persist'])]
     private ?SitesIddees $sitesIddees = null;
 
     public function __toString() {
