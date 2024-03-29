@@ -2,17 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\VideosBlog;
+use App\Entity\VideosBlogs;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class VideosBlogCrudController extends AbstractCrudController
+class VideosBlogsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return VideosBlog::class;
+        return VideosBlogs::class;
     }
 
     /*

@@ -34,16 +34,21 @@ class Blog
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
-    #[ORM\ManyToMany(targetEntity: ImagesBlog::class, mappedBy: 'blog')]
-    private Collection $imagesBlogs;
+    #[ORM\ManyToMany(targetEntity: Sources::class, inversedBy: 'blogs')]
+    private Collection $sources;
 
-    #[ORM\ManyToMany(targetEntity: VideosBlog::class, mappedBy: 'blog')]
-    private Collection $videosBlogs;
+    #[ORM\ManyToMany(targetEntity: VideosBlogs::class, inversedBy: 'blogs')]
+    private Collection $videos;
+
+    #[ORM\ManyToMany(targetEntity: ImagesBlogs::class, inversedBy: 'blogs')]
+    private Collection $images;
 
     public function __construct()
     {
-        $this->imagesBlogs = new ArrayCollection();
-        $this->videosBlogs = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
+        $this->sources = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,55 +129,73 @@ class Blog
     }
 
     /**
-     * @return Collection<int, ImagesBlog>
+     * @return Collection<int, Sources>
      */
-    public function getImagesBlogs(): Collection
+    public function getSources(): Collection
     {
-        return $this->imagesBlogs;
+        return $this->sources;
     }
 
-    public function addImagesBlog(ImagesBlog $imagesBlog): static
+    public function addSource(Sources $source): static
     {
-        if (!$this->imagesBlogs->contains($imagesBlog)) {
-            $this->imagesBlogs->add($imagesBlog);
-            $imagesBlog->addBlog($this);
+        if (!$this->sources->contains($source)) {
+            $this->sources->add($source);
         }
 
         return $this;
     }
 
-    public function removeImagesBlog(ImagesBlog $imagesBlog): static
+    public function removeSource(Sources $source): static
     {
-        if ($this->imagesBlogs->removeElement($imagesBlog)) {
-            $imagesBlog->removeBlog($this);
-        }
+        $this->sources->removeElement($source);
 
         return $this;
     }
 
     /**
-     * @return Collection<int, VideosBlog>
+     * @return Collection<int, VideosBlogs>
      */
-    public function getVideosBlogs(): Collection
+    public function getVideos(): Collection
     {
-        return $this->videosBlogs;
+        return $this->videos;
     }
 
-    public function addVideosBlog(VideosBlog $videosBlog): static
+    public function addVideo(VideosBlogs $video): static
     {
-        if (!$this->videosBlogs->contains($videosBlog)) {
-            $this->videosBlogs->add($videosBlog);
-            $videosBlog->addBlog($this);
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
         }
 
         return $this;
     }
 
-    public function removeVideosBlog(VideosBlog $videosBlog): static
+    public function removeVideo(VideosBlogs $video): static
     {
-        if ($this->videosBlogs->removeElement($videosBlog)) {
-            $videosBlog->removeBlog($this);
+        $this->videos->removeElement($video);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ImagesBlogs>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(ImagesBlogs $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
         }
+
+        return $this;
+    }
+
+    public function removeImage(ImagesBlogs $image): static
+    {
+        $this->images->removeElement($image);
 
         return $this;
     }

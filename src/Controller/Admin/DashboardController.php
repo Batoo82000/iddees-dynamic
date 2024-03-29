@@ -5,12 +5,13 @@ namespace App\Controller\Admin;
 use App\Entity\Blog;
 use App\Entity\HorairesApports;
 use App\Entity\HorairesMagasin;
-use App\Entity\ImagesBlog;
+use App\Entity\ImagesBlogs;
 use App\Entity\LocalisationSites;
 use App\Entity\Organigramme;
 use App\Entity\RoleOrganigramme;
 use App\Entity\SitesIddees;
-use App\Entity\VideosBlog;
+use App\Entity\Sources;
+use App\Entity\VideosBlogs;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -52,8 +53,9 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
-        yield MenuItem::LinkToCrud('Images des Articles', 'fa fa-image', ImagesBlog::class);
-        yield MenuItem::LinkToCrud('Videos des Articles', 'fa fa-video', VideosBlog::class);
+        yield MenuItem::LinkToCrud('Vidéos Articles', 'fa fa-newspaper', VideosBlogs::class);
+        yield MenuItem::LinkToCrud('Images Articles', 'fa fa-newspaper', ImagesBlogs::class);
+        yield MenuItem::LinkToCrud('Sources Articles', 'fa fa-newspaper', Sources::class);
         yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
         yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
         yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\VideosBlogRepository;
+use App\Repository\ImagesBlogsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: VideosBlogRepository::class)]
-class VideosBlog
+#[ORM\Entity(repositoryClass: ImagesBlogsRepository::class)]
+class ImagesBlogs
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,12 +24,16 @@ class VideosBlog
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Blog::class, inversedBy: 'videosBlogs')]
-    private Collection $blog;
+    #[ORM\ManyToMany(targetEntity: Blog::class, mappedBy: 'images')]
+    private Collection $blogs;
 
     public function __construct()
     {
-        $this->blog = new ArrayCollection();
+        $this->blogs = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->nom;
     }
 
     public function getId(): ?int
@@ -76,15 +80,16 @@ class VideosBlog
     /**
      * @return Collection<int, Blog>
      */
-    public function getBlog(): Collection
+    public function getBlogs(): Collection
     {
-        return $this->blog;
+        return $this->blogs;
     }
 
     public function addBlog(Blog $blog): static
     {
-        if (!$this->blog->contains($blog)) {
-            $this->blog->add($blog);
+        if (!$this->blogs->contains($blog)) {
+            $this->blogs->add($blog);
+            $blog->addImage($this);
         }
 
         return $this;
@@ -92,7 +97,9 @@ class VideosBlog
 
     public function removeBlog(Blog $blog): static
     {
-        $this->blog->removeElement($blog);
+        if ($this->blogs->removeElement($blog)) {
+            $blog->removeImage($this);
+        }
 
         return $this;
     }
