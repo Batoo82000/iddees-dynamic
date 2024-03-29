@@ -3,33 +3,47 @@
 {% block title %}Sensiblisation{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/sensibilisation.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blog-show.css')}}">
 {% endblock %}
 
 {% block body %}
-<div class="liste_articles">
-    {% for blog in blogs %}
-    <a href="#">
-        <div class="article">
-                <div class="article_titre">
-                    <h3>{{ blog.titre }}</h3>
-                </div>
-                <div class="article_image">
-                    <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
-                </div>
-                <div class="article_auteur_date">
-                    <div class="article_auteur">
-                        <p>Écrit par : </p>
-                        <p>{{ blog.auteur }}</p>
-                    </div>
-                    <div class="article_date">
-                        <p>Posté le : </p>
-                        <p>{{ blog.createdAt | date("d/m/Y") }}</p>
-                    </div>
-                </div>
+    <div class="blog_container">
+        <h1>{{ blog.titre }}</h1>
+        <div class="blog_auteur_blog_date">
+            <div class="blog_auteur">
+                <p>Écrit par :</p><p>{{ blog.auteur.nom }} {{ blog.auteur.prenom }}</p>
+            </div>
+            <div class="blog_date_publication">
+                <p>Publié le :</p><p>{{ blog.createdAt | date("d/m/y H:i") }}</p>
+                {% if blog.updatedAt is not empty %}
+                    <p>Modifié le :</p><p>{{ blog.updatedAt | date("d/m/y H:i")}} </p>
+                {% endif %}
+            </div>
         </div>
-    </a>
-    {% endfor %}
-</div>
+
+        <div class="blog_texte">
+            {{ blog.texteblog | raw}}
+        </div>
+        <div class="blog_galerie">
+            {% for image in blog.images %}
+                <img src="{{ asset('assets/img/blog/' ~ image.path) }}" alt="{{ image.nom }}" title="{{ image.description }}">
+            {% endfor %}
+        </div>
+        <div class="blog_videos">
+            {% for video in blog.videos %}
+                <div class="video">
+                    <div class="blog_video">{{ video.url | raw}}</div>
+                    <div class="video_titre">{{ video.titre }}</div>
+                </div>
+
+            {% endfor %}
+        </div>
+        <div class="blog_sources">
+            <p>Source(s) : </p>
+            {% for source in blog.sources %}
+                <a href="{{ source.path}}" target="_blank">{{ source.titre }}</a>
+            {% endfor %}
+        </div>
+
+    </div>
 {% endblock %}

@@ -10,7 +10,7 @@
 {% block body %}
 <div class="liste_articles">
     {% for blog in blogs %}
-    <a href="#">
+    <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
         <div class="article">
                 <div class="article_titre">
                     <h3>{{ blog.titre }}</h3>
@@ -21,7 +21,7 @@
                 <div class="article_auteur_date">
                     <div class="article_auteur">
                         <p>Écrit par : </p>
-                        <p>{{ blog.auteur }}</p>
+                        <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
                     </div>
                     <div class="article_date">
                         <p>Posté le : </p>

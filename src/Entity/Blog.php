@@ -25,9 +25,6 @@ class Blog
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $auteur = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $texte_blog = null;
 
@@ -43,12 +40,20 @@ class Blog
     #[ORM\ManyToMany(targetEntity: ImagesBlogs::class, inversedBy: 'blogs')]
     private Collection $images;
 
+    #[ORM\ManyToOne(inversedBy: 'blogs')]
+    private ?AuteursBlogs $auteur = null;
+
+    #[ORM\ManyToMany(targetEntity: ThemesBlogs::class, inversedBy: 'blogs')]
+    private Collection $themes;
+
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->sources = new ArrayCollection();
         $this->videos = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->themes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,17 +97,6 @@ class Blog
         return $this;
     }
 
-    public function getAuteur(): ?string
-    {
-        return $this->auteur;
-    }
-
-    public function setAuteur(string $auteur): static
-    {
-        $this->auteur = $auteur;
-
-        return $this;
-    }
 
     public function getTexteblog(): ?string
     {
@@ -196,6 +190,42 @@ class Blog
     public function removeImage(ImagesBlogs $image): static
     {
         $this->images->removeElement($image);
+
+        return $this;
+    }
+
+    public function getAuteur(): ?AuteursBlogs
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(?AuteursBlogs $auteur): static
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ThemesBlogs>
+     */
+    public function getThemes(): Collection
+    {
+        return $this->themes;
+    }
+
+    public function addTheme(ThemesBlogs $theme): static
+    {
+        if (!$this->themes->contains($theme)) {
+            $this->themes->add($theme);
+        }
+
+        return $this;
+    }
+
+    public function removeTheme(ThemesBlogs $theme): static
+    {
+        $this->themes->removeElement($theme);
 
         return $this;
     }

@@ -2,36 +2,32 @@
 
 namespace App\Entity;
 
-use App\Repository\VideosBlogsRepository;
+use App\Repository\ThemesBlogsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: VideosBlogsRepository::class)]
-class VideosBlogs
+#[ORM\Entity(repositoryClass: ThemesBlogsRepository::class)]
+class ThemesBlogs
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $titre = null;
+    #[ORM\Column(length: 50)]
+    private ?string $theme = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $url = null;
-
-    #[ORM\ManyToMany(targetEntity: Blog::class, mappedBy: 'videos')]
+    #[ORM\ManyToMany(targetEntity: Blog::class, mappedBy: 'themes')]
     private Collection $blogs;
 
     public function __construct()
     {
         $this->blogs = new ArrayCollection();
     }
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->titre;
+        return $this->theme;
     }
 
     public function getId(): ?int
@@ -39,26 +35,14 @@ class VideosBlogs
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getTheme(): ?string
     {
-        return $this->titre;
+        return $this->theme;
     }
 
-    public function setTitre(string $titre): static
+    public function setTheme(string $theme): static
     {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(string $url): static
-    {
-        $this->url = $url;
+        $this->theme = $theme;
 
         return $this;
     }
@@ -75,7 +59,7 @@ class VideosBlogs
     {
         if (!$this->blogs->contains($blog)) {
             $this->blogs->add($blog);
-            $blog->addVideo($this);
+            $blog->addTheme($this);
         }
 
         return $this;
@@ -84,7 +68,7 @@ class VideosBlogs
     public function removeBlog(Blog $blog): static
     {
         if ($this->blogs->removeElement($blog)) {
-            $blog->removeVideo($this);
+            $blog->removeTheme($this);
         }
 
         return $this;

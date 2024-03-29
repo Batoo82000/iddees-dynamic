@@ -27,8 +27,7 @@ class BlogController extends AbstractController
     public function show($slug): Response
     {
         $blog = $this->entitymanager->getRepository(Blog::class)->findOneBySlug($slug);
-
-        return $this->render('blog/blog.html.twig', [
+        return $this->render('blog/blog-show.html.twig', [
             'blog' => $blog,
         ]);
     }
