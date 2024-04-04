@@ -25,14 +25,19 @@
             {{ blog.texteblog | raw}}
         </div>
         <div class="blog_galerie">
-            {% for image in blog.images %}
-                <img src="{{ asset('assets/img/blog/' ~ image.path) }}" alt="{{ image.nom }}" title="{{ image.description }}">
-            {% endfor %}
+            <div class="blog_galerie_grid">
+                {% for image in blog.images %}
+                    <div class="blog_galerie_grid_item">
+                        <img src="{{ asset('assets/img/blog/' ~ image.path) }}" alt="{{ image.nom }}" title="{{ image.description }}" class="grid_image" />
+                        <p>{{ image.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
         <div class="blog_videos">
             {% for video in blog.videos %}
                 <div class="video">
-                    <div class="blog_video">{{ video.url | raw}}</div>
+                    <div class="video_url">{{ video.url | raw}} </div>
                     <div class="video_titre">{{ video.titre }}</div>
                 </div>
 
@@ -41,9 +46,16 @@
         <div class="blog_sources">
             <p>Source(s) : </p>
             {% for source in blog.sources %}
-                <a href="{{ source.path}}" target="_blank">{{ source.titre }}</a>
+                <ul class="source_liste">
+                    <li class="source">
+                        <a href="{{ source.path}}" target="_blank">{{ source.titre }}</a>
+                    </li>
+                </ul>
             {% endfor %}
         </div>
 
     </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('assets/js/galerie.js') }}"></script>
 {% endblock %}

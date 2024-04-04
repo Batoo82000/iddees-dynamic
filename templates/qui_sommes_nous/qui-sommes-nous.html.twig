@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/card.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/arrowToTop.css') }}">
 {% endblock %}
-
 {% block body %}
+{% include '/commons/arrowToTop.html.twig' %}
     <div class="iddees_container">
-
         <!-- section description accordion à partir de 576px ou moins (version portable) -->
 
         <div class="accordion">
@@ -234,4 +234,6 @@
         {% endfor %}
         <!-- Fin organigramme version PC fixe -->
     </div>
+    <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
 {% endblock %}
+

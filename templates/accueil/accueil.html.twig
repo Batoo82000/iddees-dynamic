@@ -2,23 +2,30 @@
 
 {% block title %}IDDEES | Accueil{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accueil.css')}}">
+{% endblock %}
+
+{% block btn %}
+{% endblock %}
+
 {% block body %}
     <div class="accueil_container">
 
         <div class="accueil_img">
             <img src="assets/img/logo.png" alt="Logo de l'association IDDEES">
         </div>
-
-        <div class="accueil_titre">
-            <h1>Bienvenue sur le site de l'association IDDEES</h1>
-        </div>
-
-        <div class="accueil_description">
-            <p>Description succinct de l'association : <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sint delectus optio nisi ratione voluptatum debitis, possimus alias dolorum cumque facere et necessitatibus! Corrupti, id nostrum cupiditate libero dolorem expedita.
-            Sit, exercitationem accusamus? Dolores, atque qui pariatur eaque accusantium aliquam vero similique non amet dolorum ratione esse ab, in rem, dolore porro iusto libero magni unde enim officia quo dolorem?
-            Cumque consequuntur incidunt voluptates! Non sed, atque nostrum, aperiam cumque expedita modi veritatis iure sapiente, harum incidunt odit nulla ea eos? Laudantium perferendis obcaecati labore quos dicta possimus, incidunt sit.
-            </p>
+        <div class="accueil_titre_description">
+            <div class="accueil_titre">
+                <h1>Bienvenue sur le site de l'association IDDEES</h1>
+            </div>
+            <div class="accueil_description">
+                <p>Description succinct de l'association : <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sint delectus optio nisi ratione voluptatum debitis, possimus alias dolorum cumque facere et necessitatibus! Corrupti, id nostrum cupiditate libero dolorem expedita.
+                Sit, exercitationem accusamus? Dolores, atque qui pariatur eaque accusantium aliquam vero similique non amet dolorum ratione esse ab, in rem, dolore porro iusto libero magni unde enim officia quo dolorem?
+                Cumque consequuntur incidunt voluptates! Non sed, atque nostrum, aperiam cumque expedita modi veritatis iure sapiente, harum incidunt odit nulla ea eos? Laudantium perferendis obcaecati labore quos dicta possimus, incidunt sit.
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
