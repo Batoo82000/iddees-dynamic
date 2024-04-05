@@ -1,0 +1,39 @@
+/* Styles de base pour les éléments d'accordéon */
+@import 'variables.css';
+
+details {
+    display: flex;
+    margin: 0 10px 10px 0;
+    border-radius: 15px;
+    color: var(--primary-color);
+    width: 90%;
+    padding-top: 10px;
+    text-align: left;
+    background-color: var(--quaternary-color);
+    border: none;
+    outline: none;
+    box-shadow: var(--box-shadow-quinary);
+}
+summary {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    cursor: pointer;
+    background-color: var(--quaternary-color);
+    border-radius: 15px;
+}
+details summary::after {
+    content: "↓";
+    font-size: 30px;
+    margin-right: 10px;
+    transition: transform 0.2s linear;
+}
+[open] summary::after {
+    transform: rotate(180deg);
+}
+.card_group_accordion{
+    display: flex;
+    flex-direction: row;
+}

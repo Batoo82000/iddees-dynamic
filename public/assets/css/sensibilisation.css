@@ -1,0 +1,49 @@
+@import 'variables.css';
+.liste_articles{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+a:hover, a:hover > .article{
+    transition: 0.2s ease-in-out;
+    transform: scale(1.01);
+    color: var(--quaternary-color);
+    background-color:var(--primary-color);
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 20px 20px 20px;
+    width: 300px;
+    border-radius: 15px;
+    background-color: var(--quaternary-color);
+    box-shadow: var(--box-shadow-quinary);
+}
+.article_titre > h3 {
+    margin: 10px 5px 10px 5px;
+    text-decoration: underline;
+    text-align: center;
+}
+.article_auteur_date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+.article_auteur_date p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5px 8px 0 8px;
+}
+.article_image > img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}

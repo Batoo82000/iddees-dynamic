@@ -1,0 +1,20 @@
+:root {
+    --primary-color: white;
+    --secondary-color: #d1d4f0;
+    --tertiary-color: #A3AAE1;
+    --quaternary-color: #222A68;
+    --quinary-color: #73A9AD;
+
+    --mention-speciale: red;
+    --box-shadow-quinary: 10px 10px 10px -4px var(--quinary-color);
+
+    --primary-font: "Ubuntu";
+    --secondary-font: "Roboto";
+    --tertiary-font: "Spectral";
+}
+/*--primary-color: #F7FFE5;*/
+/*--quaternary-color: #A0C49D;*/
+/*--tertiary-color: #C4D7B2;*/
+/*#4b528c*/
+/*#A3AAE1*/
+/*#5663c8*/

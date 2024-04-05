@@ -1,0 +1,37 @@
+@import "variables.css";
+/*------------------------------------------------------*/
+
+/*Bouton de retour en haut de page*/
+
+/*------------------------------------------------------*/
+@media (max-width: 576px) {
+    .btn{
+        display: none;
+    }
+}
+.btn {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right:  20px;
+    bottom: 120px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    z-index: 2;
+    font-size: 30px;
+}
+.btn:hover {
+    transition: 0.1s ease-in;
+    background-color: var(--quinary-color);
+    color: black;
+}
+/*------------------------------------------------------*/
+
+/*Bouton de retour en haut de page*/
+
+/*------------------------------------------------------*/
