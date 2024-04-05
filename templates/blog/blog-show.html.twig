@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sensiblisation{% endblock %}
+{% block title %}IDDEES | {{ blog.titre }}{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/blog-show.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/arrowToTop.css')}}">
 {% endblock %}
 
 {% block body %}
+    {% include '/commons/arrowToTop.html.twig' %}
     <div class="blog_container">
         <h1>{{ blog.titre }}</h1>
         <div class="blog_auteur_blog_date">
@@ -24,6 +26,7 @@
         <div class="blog_texte">
             {{ blog.texteblog | raw}}
         </div>
+        {% if blog.images is not empty %}
         <div class="blog_galerie">
             <div class="blog_galerie_grid">
                 {% for image in blog.images %}
@@ -34,6 +37,8 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
+        {% if blog.videos is not empty %}
         <div class="blog_videos">
             {% for video in blog.videos %}
                 <div class="video">
@@ -43,6 +48,8 @@
 
             {% endfor %}
         </div>
+        {% endif %}
+        {% if blog.sources is not empty %}
         <div class="blog_sources">
             <p>Source(s) : </p>
             {% for source in blog.sources %}
@@ -53,9 +60,14 @@
                 </ul>
             {% endfor %}
         </div>
+        {% endif %}
+
+        <div class="modal" id="image-modal">
+            <span class="close">&times;</span>
+            <img src="" alt="" id="modal-image">
+        </div>
 
     </div>
-{% endblock %}
-{% block js %}
     <script src="{{ asset('assets/js/galerie.js') }}"></script>
+    <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
 {% endblock %}

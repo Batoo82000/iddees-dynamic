@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuiSommesNousController!{% endblock %}
+{% block title %}IDDEES | Qui sommes-nous ?{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
@@ -10,230 +10,45 @@
 {% endblock %}
 {% block body %}
 {% include '/commons/arrowToTop.html.twig' %}
+
     <div class="iddees_container">
-        <!-- section description accordion à partir de 576px ou moins (version portable) -->
 
-        <div class="accordion">
-            <button class="accordion_btn">
-                <h3>Notre association</h3>
-            </button>
-            <div class="accordion_content">
-                <p>
-                    IDDEES est une association française créée en mars 2006. Elle relève
-                    de la loi de 1901, à but non lucratif. Elle est reconnue structure
-                    d’utilité sociale. L’association exerce son activité en milieu
-                    rural, en faveur de l’environnement, pour un public en difficulté ou
-                    en rupture sociale. IDDEES totalise 47 salariés répartis sur trois
-                    établissements : – Le siège social est basé au 27 avenue des
-                    Tourondes, 82300 Caussade. – Le second établissement est situé en
-                    Zone Artisanale « Rivals Haut » , 82130 Lafrançaise. -Le troisième
-                    établissement est situé à « Auléry », 82110 Lauzerte.
-                </p>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <button class="accordion_btn">
-                <h3>Nos activités de production</h3>
-            </button>
-            <div class="accordion_content">
-                <p>
-                    Actions en faveur de l’environnement. L’association IDDEES exerce
-                    son activité d’insertion sur trois établissements reconnus Ateliers
-                    et Chantiers d’Insertion (ACI) par les services du préfet de Tarn et
-                    Garonne. Ces 3 ACI ont des recycleries/ressourceries pour modèle
-                    économique. IDDEES réemploie, réutilise et recycle les produits en
-                    fin de vie, issus de collectes en porte à porte. Découpage de nos
-                    différentes activités : Gestion des apports volontaires et tri des
-                    produits cédés à l’association. Collecte d’encombrants auprès des
-                    ménages et des professionnels. Réutilisation et réparations des
-                    produits ou engins à moteur thermique dans notre atelier Mécanique.
-                    Création, réutilisation et réemploi de produits en bois via notre
-                    atelier Menuiserie. Réutilisation, réemploi et réparation de
-                    produits électriques dans notre atelier Test du blanc. Réutilisation
-                    et réemploi de matériel informatique dans notre atelier Test
-                    informatique. Réutilisation et réparation de cycles dans notre
-                    atelier Cycles. Démantèlement des produits en fin de vie ne pouvant
-                    être réemployés ou réutilisés et acheminement des matières dans des
-                    filières agréées. Revente dans l’espace vente de nos recycleries,
-                    pour donner une seconde vie aux biens cédés à l’association et aux
-                    produits créés et réparés dans nos ateliers. Entretien des espaces
-                    verts pour collectivités et professionnels.
-                </p>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <button class="accordion_btn"><h3>
-                    Pourquoi une association d’insertion par l’activité économique ?
-                </h3>
-            </button>
-            <div class="accordion_content">
-                <p>
-                    La société française est bâtie sur la valeur du travail qui génère
-                    un revenu pour consommer, se loger… Les recycleries mobilisent par
-                    le travail, des personnes peu qualifiées, issues des minima-sociaux.
-                    Ces personnes sont accompagnées par notre CESF et notre CIP qui les
-                    aident à lever les freins à l’emploi et facilitent leur retour dans
-                    le monde ordinaire du travail. Nous luttons contre une forme
-                    d’exclusion. Exemple de freins à l’emploi en local : Délocalisation
-                    des industries de main-d’œuvre Absence de qualification Âge Aléas de
-                    la vie Mobilité Santé et handicap Endettement Rupture familiale
-                    L’association IDDEES est née d’une volonté de préserver une activité
-                    en faveur de l’environnement pour un public en difficulté ou en
-                    rupture sociale.
-                </p>
-            </div>
-        </div>
-
-        <!-- section description accordion à partir de 576px ou moins (version portable) -->
-
-        <h2>Organigramme de l'association</h2>
-
-        <!-- section accordion à partir de 576px ou moins (version portable) -->
-        {% for site in sites %}
-            <div class="accordion">
-                <button class="accordion_btn">
-                    <h3>{{ site.site}}</h3>
-                </button>
-                <div class="accordion_content">
-                    <div class="card_group_accordion">
-                        {% for organigramme in site.organigramme %}
-                        <div class="card">
-                            <div class="card_img">
-                                {% if organigramme.photo is empty %}
-                                    <img
-                                            src="assets/img/profil_img.svg"
-                                            alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
-                                    />
-                                {% else %}
-                                    <img
-                                            src="assets/img/organigramme/{{ organigramme.photo }}"
-                                            alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
-                                    />
-                                {% endif %}
-                            </div>
-                            <div class="card_position">
-                                <h5>{{ organigramme.roleOrganigramme }}</h5>
-                            </div>
-                            <div class="card_nom">
-                                <p>{{ organigramme.prenom }} {{ organigramme.nom }}</p>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-        <!--Fin section accordion à partir de 576px ou moins (version portable) -->
-
-        <!-- section description pc fixe > 576px (PC fixe) -->
-        <div class="iddees_description">
-            <div class="iddees_description_titre">
-                <h2>Notre association</h2>
-            </div>
-            <div class="iddees_description_texte">
-                <p>
-                    IDDEES est une association française créée en mars 2006. Elle relève
-                    de la loi de 1901, à but non lucratif. Elle est reconnue structure
-                    d’utilité sociale. L’association exerce son activité en milieu
-                    rural, en faveur de l’environnement, pour un public en difficulté ou
-                    en rupture sociale. IDDEES totalise 47 salariés répartis sur trois
-                    établissements : – Le siège social est basé au 27 avenue des
-                    Tourondes, 82300 Caussade. – Le second établissement est situé en
-                    Zone Artisanale « Rivals Haut » , 82130 Lafrançaise. -Le troisième
-                    établissement est situé à « Auléry », 82110 Lauzerte.
-                </p>
-            </div>
-        </div>
-
-        <div class="iddees_description">
-            <div class="iddees_description_titre">
-                <h2>Nos activités de production</h2>
-            </div>
-            <div class="iddees_description_texte">
-                <p>
-                    Actions en faveur de l’environnement. L’association IDDEES exerce
-                    son activité d’insertion sur trois établissements reconnus Ateliers
-                    et Chantiers d’Insertion (ACI) par les services du préfet de Tarn et
-                    Garonne. Ces 3 ACI ont des recycleries/ressourceries pour modèle
-                    économique. IDDEES réemploie, réutilise et recycle les produits en
-                    fin de vie, issus de collectes en porte à porte. Découpage de nos
-                    différentes activités : Gestion des apports volontaires et tri des
-                    produits cédés à l’association. Collecte d’encombrants auprès des
-                    ménages et des professionnels. Réutilisation et réparations des
-                    produits ou engins à moteur thermique dans notre atelier Mécanique.
-                    Création, réutilisation et réemploi de produits en bois via notre
-                    atelier Menuiserie. Réutilisation, réemploi et réparation de
-                    produits électriques dans notre atelier Test du blanc. Réutilisation
-                    et réemploi de matériel informatique dans notre atelier Test
-                    informatique. Réutilisation et réparation de cycles dans notre
-                    atelier Cycles. Démantèlement des produits en fin de vie ne pouvant
-                    être réemployés ou réutilisés et acheminement des matières dans des
-                    filières agréées. Revente dans l’espace vente de nos recycleries,
-                    pour donner une seconde vie aux biens cédés à l’association et aux
-                    produits créés et réparés dans nos ateliers. Entretien des espaces
-                    verts pour collectivités et professionnels.
-                </p>
-            </div>
-        </div>
-
-        <div class="iddees_description">
-            <div class="iddees_description_titre">
-                <h2>
-                    Pourquoi une association d’insertion par l’activité économique ?
-                </h2>
-            </div>
-            <div class="iddees_description_texte">
-                <p>
-                    La société française est bâtie sur la valeur du travail qui génère
-                    un revenu pour consommer, se loger… Les recycleries mobilisent par
-                    le travail, des personnes peu qualifiées, issues des minima-sociaux.
-                    Ces personnes sont accompagnées par notre CESF et notre CIP qui les
-                    aident à lever les freins à l’emploi et facilitent leur retour dans
-                    le monde ordinaire du travail. Nous luttons contre une forme
-                    d’exclusion. Exemple de freins à l’emploi en local : Délocalisation
-                    des industries de main-d’œuvre Absence de qualification Âge Aléas de
-                    la vie Mobilité Santé et handicap Endettement Rupture familiale
-                    L’association IDDEES est née d’une volonté de préserver une activité
-                    en faveur de l’environnement pour un public en difficulté ou en
-                    rupture sociale.
-                </p>
-            </div>
-        </div>
-        <!-- section description pc fixe > 576px (PC fixe) -->
-
-        <!-- Organigramme version PC fixe -->
-        {% for site in sites %}
-            <h3 class="iddees_titre">{{ site.site }}</h3>
-                <div class="card_group">
+    <h2>Organigramme de l'association IDDEES</h2>
+        <div class="organigramme">
+            {% for site in sites %}
+            <details>
+                <summary><h3 >{{ site.site}}</h3></summary>
+                <div class="card_group_accordion">
                     {% for organigramme in site.organigramme %}
-                        <div class="card">
-                            <div class="card_img">
-                                {% if organigramme.photo is empty %}
-                                    <img
-                                            src="assets/img/profil_img.svg"
-                                            alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
-                                    />
-                                {% else %}
-                                    <img
-                                            src="assets/img/organigramme/{{ organigramme.photo }}"
-                                            alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
-                                    />
-                                {% endif %}
-                            </div>
-                            <div class="card_position">
-                                <h5>{{ organigramme.roleOrganigramme }}</h5>
-                            </div>
-                            <div class="card_nom">
-                                <p>{{ organigramme.nom }}<br />{{ organigramme.prenom }} </p>
-                            </div>
+                    <div class="card">
+                        <div class="card_img">
+                            {% if organigramme.photo is empty %}
+                                <img
+                                        src="assets/img/profil_img.svg"
+                                        alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
+                                />
+                            {% else %}
+                                <img
+                                        src="assets/img/organigramme/{{ organigramme.photo }}"
+                                        alt="{{ organigramme.prenom }} {{ organigramme.nom }}"
+                                />
+                            {% endif %}
                         </div>
+                        <div class="card_position">
+                            <h5>{{ organigramme.roleOrganigramme }}</h5>
+                        </div>
+                        <div class="card_nom">
+                            <p>{{ organigramme.prenom }} {{ organigramme.nom }}</p>
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
-        {% endfor %}
-        <!-- Fin organigramme version PC fixe -->
+            </details>
+            {% endfor %}
+        </div>
     </div>
+
     <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
+
 {% endblock %}
 

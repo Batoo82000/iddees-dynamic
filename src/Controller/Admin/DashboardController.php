@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Accueil;
 use App\Entity\AuteursBlogs;
 use App\Entity\Blog;
 use App\Entity\HorairesApports;
@@ -54,6 +55,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::LinkToCrud("Page d'accueil", 'fa fa-home', Accueil::class);
         yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
         yield MenuItem::LinkToCrud('Auteurs des Articles', 'fa fa-person', AuteursBlogs::class);
         yield MenuItem::LinkToCrud('Vidéos Articles', 'fa fa-video', VideosBlogs::class);

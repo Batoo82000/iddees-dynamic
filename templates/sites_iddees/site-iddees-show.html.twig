@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ siteIddees.nom}}{% endblock %}
+{% block title %}IDDEES | {{ siteIddees.nom }} {% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
@@ -20,9 +20,6 @@
             {{ siteIddees.mentionSpeciale }}
         </p>
     </div>
-    {% else %}
-        <div class="mention-speciale">
-        </div>
     {% endif %}
     <div class="photo-map">
         <div class="photo">
@@ -34,15 +31,21 @@
     </div>
 
     <div class="info-contact">
+        {% if siteIddees.telephone is not empty %}
         <div class="telephone">
             <i class="fa-solid fa-phone"></i> : 0{{ siteIddees.telephone }}
         </div>
+        {% endif %}
+        {% if siteIddees.email %}
         <div class="email">
             <i class="fa-solid fa-envelope"></i> : {{ siteIddees.email }}
         </div>
+        {% endif %}
+        {% if siteIddees.ville %}
         <div class="adresse">
-            <i class="fa-solid fa-location-dot"></i> : {{ siteIddees.adresse }} <br /> {{ siteIddees.codePostal }}, {{ siteIddees.ville }}
+            <i class="fa-solid fa-location-dot"></i> : {{ siteIddees.adresse }} {{ siteIddees.codePostal }} {{ siteIddees.ville }}
         </div>
+        {% endif %}
     </div>
     {% if siteIddees.description is not empty  %}
     <div class="description">

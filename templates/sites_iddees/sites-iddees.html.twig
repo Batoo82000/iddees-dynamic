@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SitesIddeesController!{% endblock %}
+{% block title %}IDDEES | Nos recycleries {% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
@@ -8,16 +8,20 @@
 {% endblock %}
 
 {% block body %}
-<div class="card_group">
-    {% for siteIddees in sitesIddees %}
-            <a href="{{ path('site_iddees_show', {'id' : siteIddees.id}) }}">
-                <div class="card">
-                    <h4>{{ siteIddees.nom }}</h4>
-                    <div class="card_photo">
-                        <img src="/assets/img/sites/{{ siteIddees.photo }}" alt="{{ siteIddees.nom }}" class="photo">
-                    </div>
-                </div>
-            </a>
-    {% endfor %}
-</div>
+
+    {% if sitesIddees is not empty %}
+        <div class="card_group">
+            {% for siteIddees in sitesIddees %}
+                    <a href="{{ path('site_iddees_show', {'id' : siteIddees.id}) }}">
+                        <div class="card">
+                            <h4>{{ siteIddees.nom }}</h4>
+                            <div class="card_photo">
+                                <img src="/assets/img/sites/{{ siteIddees.photo }}" alt="{{ siteIddees.nom }}" class="photo">
+                            </div>
+                        </div>
+                    </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 {% endblock %}

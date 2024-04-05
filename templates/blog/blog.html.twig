@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sensiblisation{% endblock %}
+{% block title %}IDDEES | Sensiblisation{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
@@ -8,28 +8,34 @@
 {% endblock %}
 
 {% block body %}
-<div class="liste_articles">
-    {% for blog in blogs %}
-    <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
-        <div class="article">
-                <div class="article_titre">
-                    <h3>{{ blog.titre }}</h3>
-                </div>
-                <div class="article_image">
-                    <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
-                </div>
-                <div class="article_auteur_date">
-                    <div class="article_auteur">
-                        <p>Écrit par : </p>
-                        <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
+
+    {% if blogs is not empty %}
+        <div class="liste_articles">
+        {% for blog in blogs %}
+        <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
+            <div class="article">
+                    <div class="article_titre">
+                        <h3>{{ blog.titre }}</h3>
                     </div>
-                    <div class="article_date">
-                        <p>Posté le : </p>
-                        <p>{{ blog.createdAt | date("d/m/Y") }}</p>
+                    {% if blog.images is not empty %}
+                    <div class="article_image">
+                        <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
                     </div>
-                </div>
+                    {% endif %}
+                    <div class="article_auteur_date">
+                        <div class="article_auteur">
+                            <p>Écrit par : </p>
+                            <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
+                        </div>
+                        <div class="article_date">
+                            <p>Posté le : </p>
+                            <p>{{ blog.createdAt | date("d/m/Y") }}</p>
+                        </div>
+                    </div>
+            </div>
+        </a>
+        {% endfor %}
         </div>
-    </a>
-    {% endfor %}
-</div>
+    {% endif %}
+
 {% endblock %}
