@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\LocalisationSites;
+use App\Entity\OngletsOrganigramme;
 use App\Entity\Organigramme;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,10 +21,12 @@ class QuiSommesNousController extends AbstractController
     {
         $personnes = $this->entitymanager->getRepository(Organigramme::class)->findAll();
         $sites = $this->entitymanager->getRepository(LocalisationSites::class)->findAll();
+        $onglets = $this->entitymanager->getRepository(OngletsOrganigramme::class)->findAll();
 
         return $this->render('qui_sommes_nous/qui-sommes-nous.html.twig', [
             'personnes'=> $personnes,
-            'sites'=> $sites
+            'sites'=> $sites,
+            'onglets'=>$onglets
         ]);
     }
 }

@@ -23,7 +23,7 @@ class BlogCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
-            SlugField::new('slug')->setTargetFieldName('titre')->hideOnForm(),
+            SlugField::new('slug')->setTargetFieldName('titre'),
             AssociationField::new('themes'),
             AssociationField::new('auteur'),
             TextEditorField::new('texte_blog'),

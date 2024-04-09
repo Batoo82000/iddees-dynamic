@@ -6,12 +6,43 @@
     <link rel="stylesheet" href="{{ asset('assets/css/qui-sommes-nous.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/card.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tabs.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/arrowToTop.css') }}">
 {% endblock %}
 {% block body %}
 {% include '/commons/arrowToTop.html.twig' %}
 
     <div class="iddees_container">
+
+        <div class="tabs">
+            {% for onglet in onglets %}
+            <div role="tablist" aria-label="tabs coponent" class="tabs_btn_container">
+                <button class="tab active_tab">
+                    {{ onglet.onglet1 }}
+                </button>
+                <button
+                class="tab">
+                    {{ onglet.onglet2 }}
+                </button>
+                <button
+                class="tab">
+                    {{ onglet.onglet3 }}
+                </button>
+            </div>
+            <div
+            class="tab_content active_tab_content">
+                <p>{{ onglet.texteOnglet1 }}</p>
+            </div>
+            <div
+            class="tab_content ">
+                <p>{{ onglet.texteOnglet2 }}</p>
+            </div>
+            <div
+            class="tab_content ">
+                <p>{{ onglet.texteOnglet3 }}</p>
+            </div>
+            {% endfor %}
+        </div>
 
     <h2>Organigramme de l'association IDDEES</h2>
         <div class="organigramme">
@@ -49,6 +80,7 @@
     </div>
 
     <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
+    <script src="{{ asset('assets/js/tab.js') }}"></script>
 
 {% endblock %}
 

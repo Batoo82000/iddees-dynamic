@@ -7,6 +7,7 @@
         max-width: 300px;
         border-radius: 15px;
         max-height: 350px;
+
     }
     .card_photo{
         width: 100%;
@@ -49,7 +50,7 @@ p{
     align-items: center;
     color : var(--primary-color);
     background-color:var(--quaternary-color) ;
-    box-shadow: var(--quaternary-color);
+    box-shadow: var(--box-shadow-quinary);;
     margin: 10px auto;
 }
 .card:hover {

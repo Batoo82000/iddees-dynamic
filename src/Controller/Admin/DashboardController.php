@@ -9,6 +9,7 @@ use App\Entity\HorairesApports;
 use App\Entity\HorairesMagasin;
 use App\Entity\ImagesBlogs;
 use App\Entity\LocalisationSites;
+use App\Entity\OngletsOrganigramme;
 use App\Entity\Organigramme;
 use App\Entity\RoleOrganigramme;
 use App\Entity\SitesIddees;
@@ -64,6 +65,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::LinkToCrud('Thèmes associés aux Articles', 'fa-solid fa-swatchbook', ThemesBlogs::class);
         yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
         yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
+        yield MenuItem::LinkToCrud("Onglets pour l'oragnigramme", 'fa-solid fa-table-columns', OngletsOrganigramme::class);
         yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
         yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);
         yield MenuItem::LinkToCrud('Horaires des Sites : Apports', 'fa-regular fa-clock', HorairesApports::class);

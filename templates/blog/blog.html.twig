@@ -4,10 +4,28 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/sensibilisation.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blogs.css')}}">
+
 {% endblock %}
 
 {% block body %}
+    <div class="articles">
+            <div class="filter">
+                <h3>Filtrer par thèmes</h3>
+
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form) }}
+                    {{ form_widget(form) }}
+                </div>
+                <a href="{{ path('blog') }}" class="btn">Afficher tous les blogs</a>
+
+                {{ form_end(form) }}
+
+            </div>
+
+
+        <div class="articles_container">
 
     {% if blogs is not empty %}
         <div class="liste_articles">
@@ -37,5 +55,6 @@
         {% endfor %}
         </div>
     {% endif %}
-
+    </div>
+    </div>
 {% endblock %}

@@ -52,7 +52,7 @@ class ImagesListener implements EventSubscriberInterface
             }
         }
         if ($entity instanceof Organigramme) {
-            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $entity->getPhoto();
+            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/organigramme/' . $entity->getPhoto();
 
             if (file_exists($imgpath)) {
                 unlink($imgpath);
