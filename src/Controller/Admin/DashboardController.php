@@ -11,10 +11,13 @@ use App\Entity\ImagesBlogs;
 use App\Entity\LocalisationSites;
 use App\Entity\OngletsOrganigramme;
 use App\Entity\Organigramme;
+use App\Entity\Partners;
+use App\Entity\PartnersCategories;
 use App\Entity\RoleOrganigramme;
 use App\Entity\SitesIddees;
 use App\Entity\Sources;
 use App\Entity\ThemesBlogs;
+use App\Entity\User;
 use App\Entity\VideosBlogs;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -70,6 +73,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);
         yield MenuItem::LinkToCrud('Horaires des Sites : Apports', 'fa-regular fa-clock', HorairesApports::class);
         yield MenuItem::LinkToCrud('Horaires des Sites : Magasin', 'fa-solid fa-clock', HorairesMagasin::class);
+        yield MenuItem::LinkToCrud('Partenaires', 'fa-solid fa-handshake', Partners::class);
+        yield MenuItem::LinkToCrud('Catégories des partenaires', 'fa-solid fa-swatchbook', PartnersCategories::class);
+        yield MenuItem::LinkToCrud('Gestions des Utilisateurs', 'fa fa-user', User::class);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }

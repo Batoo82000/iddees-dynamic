@@ -1,0 +1,61 @@
+@import 'variables.css';
+
+h2 {
+ text-align: center;
+}
+.partners {
+ margin: auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ max-width: 1000px;
+}
+h3 {
+ margin-left: 10px;
+}
+.card_group_accordion {
+ display: flex;
+ flex-flow: row wrap;
+ justify-content: center;
+ padding-bottom: 30px;
+
+}
+.card > a {
+ text-decoration: none;
+}
+.card {
+ display: flex;
+ align-items: center;
+ border-radius: 15px;
+ width: 80%;
+ background-color: var(--tertiary-color);
+ box-shadow: var(--box-shadow-quinary);
+ margin-top: 20px;
+ text-decoration: none;
+}
+.card_position {
+ color: black;
+ text-decoration: none;
+ margin: 0 10px 10px 10px;
+}
+.card_img {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 150px;
+ margin: 10px;
+ padding: 10px;
+ border-radius: 15px;
+ background-color: var(--primary-color);
+}
+.card_img > img {
+width: 150px;
+height: 100%;
+object-fit: scale-down;
+}
+@media (max-width: 600px){
+ .card {
+  flex-direction: column;
+ }
+}
