@@ -17,21 +17,18 @@ class PasswordListener implements EventSubscriberInterface
      * @var ParameterBagInterface
      */
     private ParameterBagInterface|UserPasswordHasherInterface $passwordHasher;
-
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
     }
-
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             BeforeEntityPersistedEvent::class => ["hashPasswordForNewEntity"],
             BeforeEntityUpdatedEvent::class => ["hashPasswordForUpdatedEntity"],
         ];
     }
-
-    public function hashPasswordForNewEntity(BeforeEntityPersistedEvent $event)
+    public function hashPasswordForNewEntity(BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
 
@@ -46,17 +43,14 @@ class PasswordListener implements EventSubscriberInterface
             $entity->setPassword($hashedPassword);
         }
     }
-
-    public function hashPasswordForUpdatedEntity(BeforeEntityUpdatedEvent $event)
+    public function hashPasswordForUpdatedEntity(BeforeEntityUpdatedEvent $event): void
     {
         $entity = $event->getEntityInstance();
 
         if (!($entity instanceof User)) {
             return;
         }
-
         $password = $entity->getPassword();
-
         if ($password) {
             $hashedPassword = $this->passwordHasher->hashPassword($entity, $password);
             $entity->setPassword($hashedPassword);

@@ -3,13 +3,16 @@
 {% block title %}IDDEES | Sensiblisation{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/blogs.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/arrowToTop.css') }}">
 {% endblock %}
 
 {% block body %}
+    {% include '/commons/arrowToTop.html.twig' %}
     <div class="articles">
+
+        <div class="articles_container">
+
             <div class="filter">
                 <h3>Filtrer par thèmes</h3>
 
@@ -18,15 +21,10 @@
                     {{ form_label(form) }}
                     {{ form_widget(form) }}
                 </div>
-                <a href="{{ path('blog') }}" class="btn">Afficher tous les blogs</a>
+                <a href="{{ path('blog') }}" class="btn btn_blogs">Afficher tous les articles</a>
 
                 {{ form_end(form) }}
-
             </div>
-
-
-        <div class="articles_container">
-
     {% if blogs is not empty %}
         <div class="liste_articles">
         {% for blog in blogs %}
@@ -57,4 +55,5 @@
     {% endif %}
     </div>
     </div>
+    <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
 {% endblock %}

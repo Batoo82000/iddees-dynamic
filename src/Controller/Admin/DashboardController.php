@@ -59,24 +59,55 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToRoute('Retourner au site', 'fa fa-home', 'accueil');
         yield MenuItem::LinkToCrud("Page d'accueil", 'fa fa-home', Accueil::class);
-        yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
-        yield MenuItem::LinkToCrud('Auteurs des Articles', 'fa fa-person', AuteursBlogs::class);
-        yield MenuItem::LinkToCrud('Vidéos Articles', 'fa fa-video', VideosBlogs::class);
-        yield MenuItem::LinkToCrud('Images Articles', 'fa-regular fa-image', ImagesBlogs::class);
-        yield MenuItem::LinkToCrud('Sources Articles', 'fa-solid fa-link', Sources::class);
-        yield MenuItem::LinkToCrud('Thèmes associés aux Articles', 'fa-solid fa-swatchbook', ThemesBlogs::class);
-        yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
-        yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
-        yield MenuItem::LinkToCrud("Onglets pour l'oragnigramme", 'fa-solid fa-table-columns', OngletsOrganigramme::class);
-        yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
-        yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);
-        yield MenuItem::LinkToCrud('Horaires des Sites : Apports', 'fa-regular fa-clock', HorairesApports::class);
-        yield MenuItem::LinkToCrud('Horaires des Sites : Magasin', 'fa-solid fa-clock', HorairesMagasin::class);
-        yield MenuItem::LinkToCrud('Partenaires', 'fa-solid fa-handshake', Partners::class);
-        yield MenuItem::LinkToCrud('Catégories des partenaires', 'fa-solid fa-swatchbook', PartnersCategories::class);
-        yield MenuItem::LinkToCrud('Gestions des Utilisateurs', 'fa fa-user', User::class);
-
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Auteurs des Articles', 'fa fa-person', AuteursBlogs::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Vidéos Articles', 'fa fa-video', VideosBlogs::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Images Articles', 'fa-regular fa-image', ImagesBlogs::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Sources Articles', 'fa-solid fa-link', Sources::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
+            yield MenuItem::LinkToCrud('Thèmes associés aux Articles', 'fa-solid fa-swatchbook', ThemesBlogs::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud("Onglets pour l'oragnigramme", 'fa-solid fa-table-columns', OngletsOrganigramme::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Horaires des Sites : Apports', 'fa-regular fa-clock', HorairesApports::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Horaires des Sites : Magasin', 'fa-solid fa-clock', HorairesMagasin::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Partenaires', 'fa-solid fa-handshake', Partners::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Catégories des partenaires', 'fa-solid fa-swatchbook', PartnersCategories::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Gestions des Utilisateurs', 'fa fa-user', User::class);
+        }
     }
 }

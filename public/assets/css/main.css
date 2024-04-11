@@ -181,7 +181,7 @@ footer {
 @media (max-width: 576px) {
   .ul-footer {
     flex-direction: column;
-    height: 200px;
+    height: 350px;
   }
 
   .li-footer {

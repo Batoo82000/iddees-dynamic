@@ -49,29 +49,42 @@
         <ul class="ul-footer">
             <li class="li-footer">
                 <a class="lien-footer" href="cluf.html">
-                    Informations légales
+                    <p>Informations légales</p>
                 </a>
             </li>
             <li class="li-footer">
                 <a class="lien-footer" href="">
-                    lien 2
+                    <p>lien 2</p>
                 </a>
             </li>
             <li class="li-footer">
                 <a class="lien-footer" href="">
-                    lien 3
+                    <p>lien 3</p>
                 </a>
             </li>
             <li class="li-footer">
                 <a class="lien-footer" href="">
-                    lien 4
+                    <p>lien 4</p>
                 </a>
             </li>
             <li class="li-footer">
-                <a class="lien-footer" href="">
+                {% if app.user %}
+                    <a class="lien-footer" href="{{ path('admin') }}">
+                        <p> Administration : {{ app.user.nickName }}</p>
+                    </a>
+                {% else %}
+                <a class="lien-footer" href="{{ path('app_login') }}">
                     <i class="fa-solid fa-lock"></i>
                 </a>
+                {% endif %}
             </li>
+            {% if app.user %}
+            <li class="li-footer">
+                <a class="lien-footer" href="{{ path('app_logout') }}">
+                    <p> Se déconnecter</p>
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </footer>
     <script src="https://kit.fontawesome.com/c971cac520.js" crossorigin="anonymous"></script>

@@ -34,7 +34,13 @@ h3 {
  margin-top: 20px;
  text-decoration: none;
 }
+.card_title {
+ margin-bottom: 5px;
+font-size: 20px;
+}
 .card_position {
+ display: flex;
+ flex-direction: column;
  color: black;
  text-decoration: none;
  margin: 0 10px 10px 10px;

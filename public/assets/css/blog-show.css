@@ -118,19 +118,20 @@ h1 {
     height: 320px;
 }
 .video_url {
+    display: flex;
+    justify-content: center;
     overflow: hidden;
     transition: all 0.2s;
     height: 97%;
     border-radius: 15px;
-    box-shadow: var(--box-shadow-quinary);
 }
 .video_url:hover {
     transform: scale(1.05);
     z-index: 1;
-    box-shadow: var(--box-shadow-quinary);
 }
 iframe {
     max-width: 100%;
+    box-shadow: var(--box-shadow-quinary);
 }
 .blog_sources {
     margin-top: 10px;

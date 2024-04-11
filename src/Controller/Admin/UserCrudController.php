@@ -2,16 +2,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use JetBrains\PhpStorm\NoReturn;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -32,6 +30,17 @@ class UserCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nickName'),
+            ChoiceField::new('roles')
+                ->allowMultipleChoices()
+                ->setChoices([
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_AUTHOR' => 'ROLE_AUTHOR',
+                ])
+                ->setFormTypeOptions([
+                    'multiple' => true,
+                    'expanded' => false,
+                ])
+                ->setFormType(ChoiceType::class),
             TextField::new('password')
                 ->setFormType(RepeatedType::class)
                 ->setFormTypeOptions([
@@ -43,30 +52,7 @@ class UserCrudController extends AbstractCrudController
                         'label' =>'Confirm Password',
                     ],
                 ])
-                ->setRequired($pageName === Crud::PAGE_NEW)
                 ->onlyOnForms()
-        ];
-    }
-
-    #[NoReturn] public function prePersistEntity(User $user): void
-    {
-        $this->hashPassword($user);
-    }
-
-    #[NoReturn] private function hashPassword(UserInterface $user): void
-    {
-        $password = $user->getPassword();
-
-        if ($password) {
-            $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
-            $user->setPassword($hashedPassword);
-        }
-    }
-
-    public static function getSubscribedEvents(): array
-    {
-        return [
-            BeforeEntityPersistedEvent::class => ['prePersistEntity'],
         ];
     }
 }
