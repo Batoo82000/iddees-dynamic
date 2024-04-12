@@ -3,18 +3,22 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Accueil;
+use App\Entity\APropos;
 use App\Entity\AuteursBlogs;
 use App\Entity\Blog;
 use App\Entity\HorairesApports;
 use App\Entity\HorairesMagasin;
 use App\Entity\ImagesBlogs;
 use App\Entity\LocalisationSites;
+use App\Entity\MentionsLegales;
 use App\Entity\OngletsOrganigramme;
 use App\Entity\Organigramme;
 use App\Entity\Partners;
 use App\Entity\PartnersCategories;
+use App\Entity\RGPD;
 use App\Entity\RoleOrganigramme;
 use App\Entity\SitesIddees;
+use App\Entity\SocialNetwork;
 use App\Entity\Sources;
 use App\Entity\ThemesBlogs;
 use App\Entity\User;
@@ -109,5 +113,18 @@ class DashboardController extends AbstractDashboardController
         if ($this->isGranted('ROLE_ADMIN') && '...') {
             yield MenuItem::LinkToCrud('Gestions des Utilisateurs', 'fa fa-user', User::class);
         }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Pied de page : À propos', 'fa-solid fa-file-contract', APropos::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Pied de page : Mentions légales', 'fa-solid fa-file-contract', MentionsLegales::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Pied de page : RGPD', 'fa-solid fa-file-contract', RGPD::class);
+        }
+        if ($this->isGranted('ROLE_ADMIN') && '...') {
+            yield MenuItem::LinkToCrud('Pied de page : Réseaux sociaux', 'fa-solid fa-network-wired', SocialNetwork::class);
+        }
     }
 }
+

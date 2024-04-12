@@ -6,13 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactType extends AbstractType
 {
@@ -21,6 +21,7 @@ class ContactType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label'=> false,
+                'constraints' => new Assert\NotBlank(),
                 'attr'=> [
                     "class"=> "input",
                     "placeholder" => "Nom et prénom",
@@ -29,6 +30,7 @@ class ContactType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label'=> false,
+                'constraints' => new Assert\Email(),
                 'attr'=> [
                     "class"=> "input",
                     "placeholder" => "Email",
@@ -49,6 +51,7 @@ class ContactType extends AbstractType
             ])
             ->add('message', TextareaType::class, [
                 'label'=> false,
+                'constraints' => new Assert\NotBlank(),
                 'attr'=> [
                     "class"=> "input textarea",
                     "placeholder" => "Votre message",
