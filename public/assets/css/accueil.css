@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 50px auto 0;
 }
 .accueil_titre_description {
     max-width: 600px;
@@ -69,6 +69,18 @@
     .accueil_titre_description {
         margin-right: 0;
     }
+}
+.accueil_article_titre{
+    margin: 20px auto 0;
+    text-decoration: underline;
+    text-align: center;
+    font-size: clamp(30px, 3vw, 40px);
+}
+.blogs_container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
 }
 @media (max-width: 400px){
     .accueil_img > img {

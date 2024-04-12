@@ -15,13 +15,13 @@ class Mail {
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => 'batoo82000@gmail.com',
+                        'Email' => 'web@iddees.fr',
                         'Name' => $from_name
                     ],
                     'To' => [
                         [
-                            'Email' => "batoo82000@gmail.com",
-                            'Name' => "Sébastien"
+                            'Email' => "web@iddees.fr",
+                            'Name' => "Contact IDDEES"
                         ]
                     ],
                     'Subject' => $suject,

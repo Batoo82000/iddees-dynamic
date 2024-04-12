@@ -4,6 +4,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/css/accueil.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blogs.css')}}">
 {% endblock %}
 
 {% block btn %}
@@ -27,5 +28,37 @@
                 {% endfor %}
             </div>
         </div>
+
+    </div>
+    <h2 class="accueil_article_titre">Les derniers articles :</h2>
+    <div class="blogs_container">
+        {% if blogs is not empty %}
+            <div class="liste_articles">
+                {% for blog in blogs %}
+                    <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
+                        <div class="article">
+                            <div class="article_titre">
+                                <h3>{{ blog.titre }}</h3>
+                            </div>
+                            {% if blog.images is not empty %}
+                                <div class="article_image">
+                                    <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
+                                </div>
+                            {% endif %}
+                            <div class="article_auteur_date">
+                                <div class="article_auteur">
+                                    <p>Écrit par : </p>
+                                    <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
+                                </div>
+                                <div class="article_date">
+                                    <p>Posté le : </p>
+                                    <p>{{ blog.createdAt | date("d/m/Y") }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
