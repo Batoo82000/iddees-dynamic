@@ -59,6 +59,7 @@ a:hover, a:hover > .article, .btn:hover{
     transform: scale(1.01);
     color: var(--quaternary-color);
     background-color:var(--primary-color);
+    border-color: var(--quaternary-color);
 }
 #themes {
     text-align: center;
