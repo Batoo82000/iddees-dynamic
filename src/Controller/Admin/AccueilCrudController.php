@@ -20,8 +20,8 @@ class AccueilCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('titre'),
-            TextEditorField::new('description'),
+            TextField::new('titre')->setRequired(true),
+            TextEditorField::new('description')->setRequired(true),
         ];
     }
 

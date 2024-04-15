@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IDDEES | À propos{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/mentions.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>À propos</h1>
+    <div class="content">
+        {% for text in content %}
+            {{ text.content | raw }}
+        {% endfor %}
+    </div>
+{% endblock %}

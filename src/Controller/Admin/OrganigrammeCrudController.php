@@ -22,14 +22,14 @@ class OrganigrammeCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('nom'),
-            TextField::new('prenom'),
+            TextField::new('nom')->setRequired(true),
+            TextField::new('prenom')->setRequired(true),
             ImageField::new('photo')
                 ->setBasePath("assets/img/organigramme")
                 ->setUploadDir('/public/assets/img/organigramme')
                 ->setUploadedFileNamePattern("[name]-[timestamp].[extension]"),
-            AssociationField::new('roleOrganigramme'),
-            AssociationField::new('localisationSites'),
+            AssociationField::new('roleOrganigramme')->setRequired(true),
+            AssociationField::new('localisationSites')->setRequired(true),
         ];
     }
 

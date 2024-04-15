@@ -1,4 +1,4 @@
-const btn = document.querySelector('.btn')
+const btn = document.querySelector('.btn_arrow_to_top')
 
 btn.addEventListener('click', () => {
     window.scrollTo(

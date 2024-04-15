@@ -2,8 +2,11 @@
 @import "variables.css";
 
 body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   box-sizing: border-box;
   background: var(--primary-color);
   font-family:  var(--primary-font),var(--secondary-font),var(--tertiary-font);
@@ -11,7 +14,8 @@ body {
 
 @media (max-width: 768px) {
   body {
-    background-image: none;
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 }
 /*------------------------------------------------------*/
@@ -37,7 +41,7 @@ nav {
 
 .img-navbar {
   height: 100%;
-  width: 120px;
+  width: 100px;
 }
 
 .li-navbar {
@@ -69,7 +73,7 @@ nav {
   display: flex;
   margin: 0;
   padding: 0;
-  height: 120px;
+  height: 100px;
   width: 100%;
   justify-content: space-around;
   align-items: center;
@@ -102,7 +106,7 @@ nav {
     display: none;
     width: 100%;
     position: absolute;
-    top: 240px;
+    top: 220px;
     height: 100%;
     z-index: 10;
   }
@@ -128,7 +132,10 @@ nav {
   }
 }
 
-
+.block_body {
+  flex: 1;
+  margin-bottom: 20px;
+}
 
 /*------------------------------------------------------*/
 
@@ -137,18 +144,16 @@ nav {
 /*------------------------------------------------------*/
 
 footer {
-  min-height: 50vh;
-  position: relative;
-  z-index: 0;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .ul-footer {
-  position: absolute;
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
-  height: 120px;
+  height: 80px;
   background-color: var(--quaternary-color);
   padding: 0;
   margin: 0;
@@ -181,7 +186,7 @@ footer {
 @media (max-width: 576px) {
   .ul-footer {
     flex-direction: column;
-    height: 200px;
+    height: 350px;
   }
 
   .li-footer {

@@ -1,0 +1,11 @@
+h1 {
+    margin-top: 30px;
+    text-align: center
+}
+.content {
+    margin:  30px auto;
+    max-width: 1000px;
+}
+.content > :nth-child(1) {
+    margin: 0 20px;
+}

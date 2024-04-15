@@ -1,79 +1,93 @@
-/*-----------------------------------------*/
-/*version formulaire pour le site dynamique*/
-/*-----------------------------------------*/
-.nous_contacter_form{
-    display: flex;
-    flex-direction: column;
-    background-color: #A0C49D;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px #A0C49D;
-}
-.nous_contacter_form > input,  .nous_contacter_form > textarea{
-    width: 80%;
-    border-radius: 5px;
-    margin: 20px;
-}
-.nous_contacter_form > textarea{
-    resize: none;
-}
-.nous_contacter_form > input{
-    height: 30px;
-}
-button{
-    padding:10px 20px;
-    margin: 20px 0;
-    background-color: #F7FFE5;
-    color: #A0C49D;
-    border-radius: 10px;
-    border: 1px solid#A0C49D;
-}
-button:hover{
-    transition: 0.2s ease-in-out;
-    background-color: #A0C49D;
-    color: #F7FFE5;
-    border: 1px solid #F7FFE5;
-}
-
-.nous_contacter_select{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.nous_contacter_select > label{
-    padding-right: 5px;
-}
-select{
-    padding: 5px;
-    color: #A0C49D;
-    background-color: #F7FFE5;
-    border-radius: 5px;
-}
-/*-----------------------------------------*/
-/*version formulaire pour le site dynamique*/
-/*-----------------------------------------*/
-
-/*---------------------------------*/
-/*version texte pour le site static*/
-/*---------------------------------*/
-
-.contact_static {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    background-color: #A0C49D;
+h1 {
     text-align: center;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px #A0C49D;
+    margin: 30px auto;
+    font-size: clamp(25px, 4vw, 45px);
 }
-.contact_static > p, .contact_static > h2{
-    width: fit-content;
+.alert-success {
+    text-align: center;
+    font-size: clamp(15px, 4vw, 35px);;
+    padding: 20px;
+    background-color: var(--quinary-color);
+}
+form {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+#contact {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+#contact > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 90%;
+    margin: 20px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    border: 1px solid var(--quaternary-color);
+    box-shadow: var(--box-shadow-quinary);
+}
+.select {
+    border: 1px solid var(--quaternary-color);
+    border-radius: 15px;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: transparent;
+    font-size: 15px;
+    max-width: 80%;
+    box-shadow: var(--box-shadow-quinary);
+    cursor: pointer;
+}
+.textarea {
+    resize: none;
+    height: 200px;
+}
+.checkbox{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-/*---------------------------------*/
-/*version texte pour le site static*/
-/*---------------------------------*/
+.btn {
+    margin-top: 20px;
+    width: 60%;
+    text-align: center;
+    background-color: var(--quaternary-color);
+    border-radius: 15px;
+    padding: 20px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--primary-color);
+    box-shadow: var(--box-shadow-quinary);
+}
+.btn:hover {
+    transition: 0.2s ease-in-out;
+    background-color: var(--quinary-color);
+    color: black;
+    cursor: pointer;
+}
+@media  (max-width: 750px) {
+    #contact > div:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .select{
+        margin-top: 5px;
+    }
+}

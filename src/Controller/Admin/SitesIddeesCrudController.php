@@ -26,18 +26,18 @@ class SitesIddeesCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('nom'),
+            TextField::new('nom')->setRequired(true),
             TextField::new('mentionSpeciale'),
-            TextareaField::new('carte'),
+            TextareaField::new('carte')->setRequired(true),
             ImageField::new('photo')
                 ->setBasePath("assets/img/sites")
                 ->setUploadDir('/public/assets/img/sites')
                 ->setUploadedFileNamePattern("[name]-[timestamp].[extension]"),
             TextField::new('adresse'),
             NumberField::new('codePostal'),
-            TextField::new('ville'),
+            TextField::new('ville')->setRequired(true),
             NumberField::new('telephone'),
-            EmailField::new('email'),
+            EmailField::new('email')->setRequired(true),
             TextEditorField::new('description'),
             AssociationField::new('horairesMagasin'),
             AssociationField::new('horairesApports'),

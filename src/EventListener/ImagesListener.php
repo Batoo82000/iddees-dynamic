@@ -4,6 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\ImagesBlogs;
 use App\Entity\Organigramme;
+use App\Entity\Partners;
 use App\Entity\SitesIddees;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -33,7 +34,7 @@ class ImagesListener implements EventSubscriberInterface
     {
         $entity = $event->getEntityInstance();
 
-        if (!($entity instanceof ImagesBlogs) && !($entity instanceof Organigramme) && !($entity instanceof SitesIddees)) {
+        if (!($entity instanceof ImagesBlogs) && !($entity instanceof Organigramme) && !($entity instanceof SitesIddees) && !($entity instanceof Partners)) {
             return;
         }
 
@@ -52,7 +53,14 @@ class ImagesListener implements EventSubscriberInterface
             }
         }
         if ($entity instanceof Organigramme) {
-            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $entity->getPhoto();
+            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/organigramme/' . $entity->getPhoto();
+
+            if (file_exists($imgpath)) {
+                unlink($imgpath);
+            }
+        }
+        if ($entity instanceof Partners) {
+            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/partners/' . $entity->getLogo();
 
             if (file_exists($imgpath)) {
                 unlink($imgpath);

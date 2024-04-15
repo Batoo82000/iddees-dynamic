@@ -26,12 +26,11 @@
                 <a class="lien-navbar" href="{{ path ('blog') }}">Sensibilisation</a>
             </li>
             <li class="li-navbar">
-                <a class="lien-navbar" href="partenaires.html">Nos partenaires</a>
+                <a class="lien-navbar" href="{{ path ('partners') }}">Nos partenaires</a>
             </li>
             <li class="li-navbar">
-                <a class="lien-navbar" href="contact.html">
-                    Nous contacter / Adhérer<br>
-                    Demander une collecte</a>
+                <a class="lien-navbar" href="{{ path ('contact') }}">
+                    Nous contacter </a>
             </li>
 
         </ul>
@@ -42,37 +41,52 @@
         </div>
     </nav>
 
-
+<div class="block_body">
         {% block body %}
 
         {% endblock %}
+</div>
+
     <footer>
         <ul class="ul-footer">
             <li class="li-footer">
-                <a class="lien-footer" href="cluf.html">
-                    Informations légales
+                <a class="lien-footer" href="{{ path ('a-propos') }}">
+                    <p>À propos</p>
                 </a>
             </li>
             <li class="li-footer">
-                <a class="lien-footer" href="">
-                    lien 2
+                <a class="lien-footer" href="{{  path ('mentions-legales') }}">
+                    <p>Mentions légales</p>
                 </a>
             </li>
             <li class="li-footer">
-                <a class="lien-footer" href="">
-                    lien 3
+                <a class="lien-footer" href="{{ path ('RGPD') }}">
+                    <p>RGPD et vie privée</p>
                 </a>
             </li>
             <li class="li-footer">
-                <a class="lien-footer" href="">
-                    lien 4
+                <a class="lien-footer" href="{{ path ('social-network') }}">
+                    <p>Nos réseaux sociaux</p>
                 </a>
             </li>
             <li class="li-footer">
-                <a class="lien-footer" href="">
+                {% if app.user %}
+                    <a class="lien-footer" href="{{ path('admin') }}">
+                        <p> Administration : {{ app.user.nickName }}</p>
+                    </a>
+                {% else %}
+                <a class="lien-footer" href="{{ path('app_login') }}">
                     <i class="fa-solid fa-lock"></i>
                 </a>
+                {% endif %}
             </li>
+            {% if app.user %}
+            <li class="li-footer">
+                <a class="lien-footer" href="{{ path('app_logout') }}">
+                    <p> Se déconnecter</p>
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </footer>
     <script src="https://kit.fontawesome.com/c971cac520.js" crossorigin="anonymous"></script>

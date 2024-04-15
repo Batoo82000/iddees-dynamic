@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.social_container
+{
+    margin: auto;
+    max-width: 1000px;
+}
+.site {
+    margin: 10px 20px;
+}
+.social_link {
+    color: var(--quaternary-color);
+    text-decoration: none;
+}
+.social_link:hover {
+    transition: 0.2s ease-in;
+    color: var(--quinary-color);
+    background-color:var(--primary-color);
+}
+i {
+    font-size: 30px;
+    margin-left: 20px;
+}

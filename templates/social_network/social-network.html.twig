@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IDDEES | Réseaux sociaux{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/socialNetwork.css')}}">
+{% endblock %}
+
+{% block body %}
+<h1>Nos réseaux sociaux</h1>
+    <div class="social_container">
+ {% for site in content %}
+     <h2 class="site"> {{ site.site }} : </h2>
+        {% if site.facebook is not empty %}
+            <a href="{{ site.facebook }}" class="social_link"><i class="fa-brands fa-facebook"></i></a>
+        {% endif %}
+     {% if site.instagram is not empty %}
+            <a href="{{ site.instagram }}" class="social_link"><i class="fa-brands fa-instagram"></i></a>
+        {% endif %}
+     {% if site.x is not empty %}
+            <a href="{{ site.x }}" class="social_link"><i class="fa-solid fa-x"></i></a>
+        {% endif %}
+     {% if site.youtube is not empty %}
+            <a href="{{ site.youtube }}" class="social_link"><i class="fa-brands fa-youtube"></i></a>
+        {% endif %}
+     {% if site.tiktok is not empty %}
+            <a href="{{ site.tiktok }}" class="social_link"><i class="fa-brands fa-tiktok"></i></a>
+        {% endif %}
+     {% if site.snapchat is not empty %}
+            <a href="{{ site.snapchat }}" class="social_link"><i class="fa-brands fa-snapchat"></i></a>
+        {% endif %}
+     {% if site.telegram is not empty %}
+            <a href="{{ site.telegram }}" class="social_link"><i class="fa-brands fa-telegram"></i></a>
+        {% endif %}
+     {% if site.linkdin is not empty %}
+            <a href="{{ site.linkdin }}" class="social_link"><i class="fa-brands fa-linkedin"></i></a>
+        {% endif %}
+
+ {% endfor %}
+    </div>
+{% endblock %}

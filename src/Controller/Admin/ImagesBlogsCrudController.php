@@ -21,8 +21,9 @@ class ImagesBlogsCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('nom'),
+            TextField::new('nom')->setRequired(true),
             ImageField::new('path')
+                ->setRequired(true)
                 ->setBasePath("assets/img/blog")
                 ->setUploadDir('/public/assets/img/blog')
                 ->setUploadedFileNamePattern("[name]-[timestamp].[extension]"),

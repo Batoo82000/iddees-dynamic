@@ -22,11 +22,11 @@ class BlogCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('titre'),
-            SlugField::new('slug')->setTargetFieldName('titre')->hideOnForm(),
+            TextField::new('titre')->setRequired(true),
+            SlugField::new('slug')->setTargetFieldName('titre'),
             AssociationField::new('themes'),
-            AssociationField::new('auteur'),
-            TextEditorField::new('texte_blog'),
+            AssociationField::new('auteur')->setRequired(true),
+            TextEditorField::new('texte_blog')->setRequired(true),
             AssociationField::new('images'),
             AssociationField::new('sources'),
             AssociationField::new('videos'),

@@ -3,39 +3,60 @@
 {% block title %}IDDEES | Sensiblisation{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ asset('assets/css/accordion.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/sensibilisation.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blogs.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/arrowToTop.css') }}">
 {% endblock %}
 
 {% block body %}
+    {% include '/commons/arrowToTop.html.twig' %}
+    <div class="articles">
 
-    {% if blogs is not empty %}
-        <div class="liste_articles">
-        {% for blog in blogs %}
-        <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
-            <div class="article">
-                    <div class="article_titre">
-                        <h3>{{ blog.titre }}</h3>
-                    </div>
-                    {% if blog.images is not empty %}
-                    <div class="article_image">
-                        <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
-                    </div>
-                    {% endif %}
-                    <div class="article_auteur_date">
-                        <div class="article_auteur">
-                            <p>Écrit par : </p>
-                            <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
-                        </div>
-                        <div class="article_date">
-                            <p>Posté le : </p>
-                            <p>{{ blog.createdAt | date("d/m/Y") }}</p>
-                        </div>
-                    </div>
+        <div class="articles_container">
+
+            <div class="filter">
+                <h3>Filtrer par thèmes</h3>
+
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form) }}
+                    {{ form_widget(form) }}
+                </div>
+                <a href="{{ path('blog') }}" class="btn btn_blogs">Afficher tous les articles</a>
+
+                {{ form_end(form) }}
             </div>
-        </a>
-        {% endfor %}
+            {% if blogs is not empty %}
+                <div class="liste_articles">
+                {% for blog in posts %}
+                <a href = "{{ path('blog_show', {'slug' : blog.slug})}}" >
+                    <div class="article">
+                            <div class="article_titre">
+                                <h3>{{ blog.titre }}</h3>
+                            </div>
+                            {% if blog.images is not empty %}
+                            <div class="article_image">
+                                <img src="assets/img/blog/{{ blog.images[0].path }}" alt="">
+                            </div>
+                            {% endif %}
+                            <div class="article_auteur_date">
+                                <div class="article_auteur">
+                                    <p>Écrit par : </p>
+                                    <p>{{ blog.auteur.prenom }} {{ blog.auteur.nom | slice(0,1)~ '.' }}</p>
+                                </div>
+                                <div class="article_date">
+                                    <p>Posté le : </p>
+                                    <p>{{ blog.createdAt | date("d/m/Y") }}</p>
+                                </div>
+                            </div>
+                    </div>
+                </a>
+                {% endfor %}
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
-
+    </div>
+    <div class="knp">
+        {{ knp_pagination_render(posts) }}
+    </div>
+    <script src="{{ asset('assets/js/arrowToTop.js') }}"></script>
 {% endblock %}

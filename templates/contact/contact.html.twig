@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IDDEES | Nous contacter{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/contact.css')}}">
+{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+<h1>Contactez IDDEES</h1>
+{{ form(form) }}
+
+{% endblock %}
