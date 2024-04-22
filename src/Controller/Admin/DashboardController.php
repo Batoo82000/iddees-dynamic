@@ -63,22 +63,23 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToRoute('Retourner au site', 'fa fa-home', 'accueil');
+
+        yield MenuItem::linkToUrl('Retourner au site', 'fa fa-home', $this->generateUrl('accueil')); // pour linker vers notre page accueil, il ne faut pas utiliser linkToRoute, mais linkToUrl, pour éviter d'avoir une url anormale, car le lien s'ouvrirait alors à travers le dashboard
         yield MenuItem::LinkToCrud("Page d'accueil", 'fa fa-home', Accueil::class);
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
             yield MenuItem::LinkToCrud('Articles', 'fa fa-newspaper', Blog::class);
         }
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
-            yield MenuItem::LinkToCrud('Auteurs des Articles', 'fa fa-person', AuteursBlogs::class);
+            yield MenuItem::LinkToCrud('Auteurs/autrices des Articles', 'fa fa-person', AuteursBlogs::class);
         }
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
-            yield MenuItem::LinkToCrud('Vidéos Articles', 'fa fa-video', VideosBlogs::class);
+            yield MenuItem::LinkToCrud('Vidéos pour les Articles', 'fa fa-video', VideosBlogs::class);
         }
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
-            yield MenuItem::LinkToCrud('Images Articles', 'fa-regular fa-image', ImagesBlogs::class);
+            yield MenuItem::LinkToCrud('Images pour les Articles', 'fa-regular fa-image', ImagesBlogs::class);
         }
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
-            yield MenuItem::LinkToCrud('Sources Articles', 'fa-solid fa-link', Sources::class);
+            yield MenuItem::LinkToCrud('Sources pour les Articles', 'fa-solid fa-link', Sources::class);
         }
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_AUTHOR')) {
             yield MenuItem::LinkToCrud('Thèmes associés aux Articles', 'fa-solid fa-swatchbook', ThemesBlogs::class);
@@ -87,13 +88,13 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::LinkToCrud('Organigramme', 'fa fa-sitemap', Organigramme::class);
         }
         if ($this->isGranted('ROLE_ADMIN') && '...') {
-            yield MenuItem::LinkToCrud("Localisations pour l'oragnigramme", 'fa fa-location-dot', LocalisationSites::class);
+            yield MenuItem::LinkToCrud("Localisations pour l'organigramme", 'fa fa-location-dot', LocalisationSites::class);
         }
         if ($this->isGranted('ROLE_ADMIN') && '...') {
-            yield MenuItem::LinkToCrud("Onglets pour l'oragnigramme", 'fa-solid fa-table-columns', OngletsOrganigramme::class);
+            yield MenuItem::LinkToCrud("Onglets pour l'organigramme", 'fa-solid fa-table-columns', OngletsOrganigramme::class);
         }
         if ($this->isGranted('ROLE_ADMIN') && '...') {
-            yield MenuItem::LinkToCrud("Rôles au sein de l'Organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
+            yield MenuItem::LinkToCrud("Rôles au sein de l'organigramme", 'fa fa-sitemap', RoleOrganigramme::class);
         }
         if ($this->isGranted('ROLE_ADMIN') && '...') {
             yield MenuItem::LinkToCrud("Les sites d'IDDEES", 'fa fa-shop', SitesIddees::class);

@@ -30,7 +30,7 @@ class ImagesListener implements EventSubscriberInterface
         ];
     }
 
-    public function deletePhysicalImage(AfterEntityDeletedEvent $event)
+    public function deletePhysicalImage(AfterEntityDeletedEvent $event): void
     {
         $entity = $event->getEntityInstance();
 
@@ -39,31 +39,40 @@ class ImagesListener implements EventSubscriberInterface
         }
 
         if ($entity instanceof SitesIddees) {
+            $photo = $entity->getPhoto();
+            if($photo) {
                 $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/sites/' . $entity->getPhoto();
+                if (file_exists($imgpath)) {
+                    unlink($imgpath);
+                }
+            }
+        }
+        if ($entity instanceof ImagesBlogs) {
+            $photo = $entity->getPath();
+            if($photo){
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $entity->getPath();
+                if (file_exists($imgpath)) {
+                    unlink($imgpath);
+                }
+            }
+        }
+        if ($entity instanceof Organigramme) {
+            $photo = $entity->getPhoto();
+            if ($photo) {
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/organigramme/' . $photo;
+                if (file_exists($imgpath)) {
+                    unlink($imgpath);
+                }
+            }
+        }
+        if ($entity instanceof Partners) {
+            $photo = $entity->getLogo();
+            if ($photo) {
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/partners/' . $entity->getLogo();
 
                 if (file_exists($imgpath)) {
                     unlink($imgpath);
                 }
-        }
-        if ($entity instanceof ImagesBlogs) {
-            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $entity->getPath();
-
-            if (file_exists($imgpath)) {
-                unlink($imgpath);
-            }
-        }
-        if ($entity instanceof Organigramme) {
-            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/organigramme/' . $entity->getPhoto();
-
-            if (file_exists($imgpath)) {
-                unlink($imgpath);
-            }
-        }
-        if ($entity instanceof Partners) {
-            $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/partners/' . $entity->getLogo();
-
-            if (file_exists($imgpath)) {
-                unlink($imgpath);
             }
         }
     }
