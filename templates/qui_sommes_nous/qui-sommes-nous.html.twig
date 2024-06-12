@@ -31,15 +31,15 @@
             </div>
             <div
             class="tab_content active_tab_content">
-                <p>{{ onglet.texteOnglet1 }}</p>
+                {{ onglet.texteOnglet1 | raw}}
             </div>
             <div
             class="tab_content ">
-                <p>{{ onglet.texteOnglet2 }}</p>
+                {{ onglet.texteOnglet2 | raw}}
             </div>
             <div
             class="tab_content ">
-                <p>{{ onglet.texteOnglet3 }}</p>
+                {{ onglet.texteOnglet3 | raw}}
             </div>
             {% endfor %}
         </div>

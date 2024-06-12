@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -75,6 +76,12 @@ class UserCrudController extends AbstractCrudController
                     'type' => PasswordType::class,
                     'first_options' => [
                         'label' =>'Saisir un mot de passe',
+                        'constraints' => [
+                            new Length([
+                                'min' => 8,
+                                'minMessage' => 'Le mot de passe doit faire au moins {{ limit }} caractères'
+                            ])
+                        ],
                     ],
                     'second_options' => [
                         'label' =>'Confirmer le mot de passe',

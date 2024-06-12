@@ -23,7 +23,7 @@ class ImagesListener implements EventSubscriberInterface
         $this->parameterBag = $parameterBag;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             AfterEntityDeletedEvent::class => ["deletePhysicalImage"],
@@ -33,15 +33,13 @@ class ImagesListener implements EventSubscriberInterface
     public function deletePhysicalImage(AfterEntityDeletedEvent $event): void
     {
         $entity = $event->getEntityInstance();
-
         if (!($entity instanceof ImagesBlogs) && !($entity instanceof Organigramme) && !($entity instanceof SitesIddees) && !($entity instanceof Partners)) {
             return;
         }
-
         if ($entity instanceof SitesIddees) {
             $photo = $entity->getPhoto();
             if($photo) {
-                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/sites/' . $entity->getPhoto();
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/sites/' . $photo;
                 if (file_exists($imgpath)) {
                     unlink($imgpath);
                 }
@@ -50,7 +48,7 @@ class ImagesListener implements EventSubscriberInterface
         if ($entity instanceof ImagesBlogs) {
             $photo = $entity->getPath();
             if($photo){
-                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $entity->getPath();
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/blog/' . $photo;
                 if (file_exists($imgpath)) {
                     unlink($imgpath);
                 }
@@ -68,8 +66,7 @@ class ImagesListener implements EventSubscriberInterface
         if ($entity instanceof Partners) {
             $photo = $entity->getLogo();
             if ($photo) {
-                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/partners/' . $entity->getLogo();
-
+                $imgpath = $this->parameterBag->get("kernel.project_dir") . '/public/assets/img/partners/' . $photo;
                 if (file_exists($imgpath)) {
                     unlink($imgpath);
                 }
